@@ -1,4 +1,4 @@
-package Administrador;
+package Login;
 
 public class Administrador {
 
