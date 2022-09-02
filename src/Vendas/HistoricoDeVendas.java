@@ -1,19 +1,21 @@
 package Vendas;
 
+import java.util.HashMap;
+
 public class HistoricoDeVendas {
 
-    private HashMap<String, Vendas> vendas;
+    private HashMap<String, Venda> vendas;
 
-    public Vendas getVendas(String idVenda) {
-
+    public Venda getVendas(String idVenda) {
+    	return this.vendas.get(idVenda);
     }
 
-    public void putVendas(Vendas venda) {
-
+    public void putVendas(Venda venda) {
+    	this.vendas.put(Integer.toString(this.vendas.size()+1), venda);
     }
 
     public void removeVendas(String idVenda) {
-
+    	this.vendas.remove(idVenda);
     }
 
 }

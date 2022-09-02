@@ -17,5 +17,9 @@ public class DepositoDeProdutos {
     public void remove(String ID) {
     	this.produtos.remove(ID);
     }
+    
+    public HashMap<String, Produto> getProdutos() {
+    	return produtos;
+    }
 
 }
