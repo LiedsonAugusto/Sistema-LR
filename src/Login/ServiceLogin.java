@@ -3,13 +3,21 @@ package Login;
 public class ServiceLogin {
 
     private RepositoryContas repositoryContas;
+    
+    public ServiceLogin(RepositoryContas repositoryContas) {
+    	this.repositoryContas = repositoryContas;
+    }
 
-    public void validaLoginFuncionario(String ID, String senha) {
-
+    public boolean validaLoginFuncionario(String ID, String senha) {
+    	Funcionario funcionario = this.repositoryContas.getFuncionario(ID);
+    	if (funcionario != null && funcionario.getSenha().equals(senha)) {
+    		return true;
+    	}
+    	return false;
     }
 
     public void validaLoginAdm(String ID, String senha) {
-
+    	Administrador administrador = this.repositoryContas.getAdministrador(ID);
     }
 
     public void adicionaFuncionario(String idFuncionario, String nome, String senha) {
