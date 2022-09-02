@@ -1,6 +1,6 @@
-package app;
+package Produtos;
 
-public class Produto {
+public class ProdutoDTO {
 
     private String ID;
 
@@ -8,15 +8,13 @@ public class Produto {
 
     private double preco;
 
-    public Produto(String ID, String nome, double preco) {
-
-    }
+    private int quantidade;
 
     public String getNome() {
 
     }
 
-    public double getpreco() {
+    public double getPreco() {
 
     }
 

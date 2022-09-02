@@ -1,11 +1,9 @@
-package app;
+package Administrador;
 
 public class ServiceAdministrador {
 
     private HistoricoDeVendas historicoDeVendas;
-
     private DepositoDeProdutos depositoDeProdutos;
-
     public ServiceAdministrador(HistoricoDeVendas historicoDeVendas, DepositoDeItens depositoDeItens) {
 
     }

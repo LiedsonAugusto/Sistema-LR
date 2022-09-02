@@ -1,8 +1,10 @@
-package app;
+package Login;
 
-public class ServiceLogin {
+public class ControllerLogin {
 
-    private RepositoryContas repositoryContas;
+    private ServiceLogin serviceLogin;
+
+    private ValidadorEntradas validador;
 
     public void validaLoginFuncionario(String ID, String senha) {
 

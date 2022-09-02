@@ -1,12 +1,12 @@
-package app;
+package Funcionario;
 
-public class ServiceFuncionario {
+public class ControllerFuncionario {
 
-    private HistoricoDeVendas historicoDeVendas;
+    private validadorEntradas validadorEntradas;
 
-    private DepositoDeProdutos depositoDeProdutos;
+    private ServiceFuncionario serviceFuncionario;
 
-    public ServiceFuncionario(HistoricoDeVendas historicoDeVendas, DepositoDeItens depositoDeItens) {
+    public ControllerFuncionario(ServiceFuncionario serviceFuncionario) {
 
     }
 

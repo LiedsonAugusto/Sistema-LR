@@ -1,4 +1,4 @@
-package app;
+package Vendas;
 
 public class HistoricoDeVendas {
 

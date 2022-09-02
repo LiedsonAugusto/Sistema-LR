@@ -1,4 +1,4 @@
-package app;
+package Produtos;
 
 public class DepositoDeProdutos {
 
