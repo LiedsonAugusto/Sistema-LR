@@ -70,6 +70,7 @@ public class ServiceAdministrador {
     public String adicionaProduto(String nome, double preco) {
     	Produto novoProduto = new Produto(nome, preco);
     	this.depositoDeProdutos.put(novoProduto);
+    	return novoProduto.getID();
     }
 
     public void removeProduto(String ID) {

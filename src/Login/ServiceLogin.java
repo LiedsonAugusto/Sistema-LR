@@ -1,8 +1,11 @@
 package Login;
 
+import Validador.ValidadorEntradas;
+
 public class ServiceLogin {
 
     private RepositoryContas repositoryContas;
+    private ValidadorEntradas validador;
     
     public ServiceLogin(RepositoryContas repositoryContas) {
     	this.repositoryContas = repositoryContas;
@@ -16,23 +19,28 @@ public class ServiceLogin {
     	return false;
     }
 
-    public void validaLoginAdm(String ID, String senha) {
+    public boolean validaLoginAdm(String ID, String senha) {
     	Administrador administrador = this.repositoryContas.getAdministrador(ID);
+    	if (senha.equals(administrador.getSenha())) {
+    		return true;
+    	}
+    	return false;
     }
 
-    public void adicionaFuncionario(String idFuncionario, String nome, String senha) {
-
+    public void adicionaFuncionario(String idFuncionario, Funcionario funcionario) {
+    	this.repositoryContas.putFuncionario(idFuncionario, funcionario);
     }
 
     public void removeFuncionario(String idFuncionario) {
-
+    	this.repositoryContas.removeFuncionario(idFuncionario);
     }
 
-    public void adicionaADM(String ID, String senha, String nome) {
-
+    public void adicionaADM(String ID, Administrador ADM) {
+    	this.adicionaADM(ID, ADM);
     }
 
     public void removeADM(String ID) {
+    	this.removeADM(ID);
 
     }
 

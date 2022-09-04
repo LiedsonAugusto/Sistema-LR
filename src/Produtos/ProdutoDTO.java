@@ -25,5 +25,10 @@ public class ProdutoDTO {
     public String getID() {
     	return this.ID;
     }
+    
+    @Override
+    public String toString() {
+    	return this.ID + " | " + this.nome + " | " + this.quantidade + " Itens em estoque | " + this.preco + " R$";
+    }
 
 }

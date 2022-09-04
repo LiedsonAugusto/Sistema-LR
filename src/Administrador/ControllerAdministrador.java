@@ -1,13 +1,15 @@
 package Administrador;
 
+import Validador.ValidadorEntradas;
+
 public class ControllerAdministrador {
 
     private ValidadorEntradas validadorEntradas;
 
     private ServiceAdministrador serviceAdministrador;
 
-    public ControllerAdministrador(serviceAdministrador serviceAdministrador) {
-
+    public ControllerAdministrador(ServiceAdministrador serviceAdministrador) {
+    	this.serviceAdministrador = serviceAdministrador;
     }
 
     public String listarDeposito() {

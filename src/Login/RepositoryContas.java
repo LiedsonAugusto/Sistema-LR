@@ -16,8 +16,8 @@ public class RepositoryContas {
     	return this.funcionarios.get(ID);
     }
 
-    public void putFuncionario(Funcionario funcionario) {
-    	this.funcionarios.put(Integer.toString(this.funcionarios.size() + 1), funcionario);
+    public void putFuncionario(String ID, Funcionario funcionario) {
+    	this.funcionarios.put(ID, funcionario);
     }
 
     public void removeFuncionario(String ID) {
@@ -28,8 +28,8 @@ public class RepositoryContas {
     	return this.administradores.get(ID);
     }
 
-    public void putAdministrador(Administrador administrador) {
-    	this.administradores.put(Integer.toString(this.administradores.size() + 1), administrador);
+    public void putAdministrador(String ID, Administrador administrador) {
+    	this.administradores.put(ID, administrador);
     }
 
     public void removeAdministrador(String ID) {

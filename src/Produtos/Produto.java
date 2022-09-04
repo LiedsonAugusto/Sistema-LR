@@ -7,8 +7,7 @@ public class Produto {
     private double preco;
     private int quantidade;
 
-    public Produto(String ID, String nome, double preco) {
-    	this.ID = ID;
+    public Produto(String nome, double preco) {
     	this.nome = nome;
     	this.preco = preco;
     	this.quantidade = 1;
@@ -17,15 +16,28 @@ public class Produto {
     public String getNome() {
     	return this.nome;
     }
+    
+    public void setNome(String novoNome) {
+    	this.nome = novoNome;
+    }
 
     public double getpreco() {
     	return this.preco;
+    }
+    
+    public void setPreco(double novoPreco) {
+    	this.preco = novoPreco;
     }
 
     public String getID() {
     	return this.ID;
     }
     
+    public void setID(String ID) {
+    	this.ID = ID;
+    }
+    
+    @Override
     public String toString() {
     	return this.ID + " | " + this.nome + " | " + this.quantidade + " Itens em estoque | " + this.preco + " R$";
     }
