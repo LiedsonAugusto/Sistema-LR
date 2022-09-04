@@ -14,8 +14,7 @@ public class Venda {
 
     private String idDaVenda;
 
-    public Venda(String idDaVenda) {
-    	this.idDaVenda = idDaVenda;
+    public Venda() {
     	Date data = new Date();
     	SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy HH:ss");
     	dataDeVenda = dataFormatada.format(data);
@@ -28,6 +27,10 @@ public class Venda {
 
     public String getIdDaVenda() {
     	return this.idDaVenda;
+    }
+    
+    public void setID(String ID) {
+    	this.idDaVenda = ID;
     }
 
     public String getDataDeVenda() {
