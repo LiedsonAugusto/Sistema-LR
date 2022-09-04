@@ -19,7 +19,7 @@ public class DepositoDeProdutos {
     }
     
     public HashMap<String, Produto> getProdutos() {
-    	return produtos;
+    	return this.produtos;
     }
 
 }

@@ -5,6 +5,10 @@ import java.util.HashMap;
 public class HistoricoDeVendas {
 
     private HashMap<String, Venda> vendas;
+    
+    public Venda get(String ID) {
+    	return this.vendas.get(ID);
+    }
 
     public Venda getVendas(String idVenda) {
     	return this.vendas.get(idVenda);
@@ -16,6 +20,10 @@ public class HistoricoDeVendas {
 
     public void removeVendas(String idVenda) {
     	this.vendas.remove(idVenda);
+    }
+    
+    public HashMap<String, Venda> getVendas(){
+    	return this.vendas;
     }
 
 }

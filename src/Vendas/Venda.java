@@ -34,4 +34,13 @@ public class Venda {
     	return this.dataDeVenda;
     }
 
+    @Override
+    public String toString() {
+    	String retorno;
+    	retorno = this.idDaVenda + " - ID da venda" + " | " + this.dataDeVenda + " - Data da venda" + '\n' + '\n';
+    	for (ProdutoDTO produto : listaDeProdutos) {
+    		retorno += produto.toString();
+    	}
+    	return retorno;
+    }
 }
