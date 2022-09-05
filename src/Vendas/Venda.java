@@ -14,8 +14,7 @@ public class Venda {
 
     private String idDaVenda;
 
-    public Venda(String idDaVenda) {
-    	this.idDaVenda = idDaVenda;
+    public Venda() {
     	Date data = new Date();
     	SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy HH:ss");
     	dataDeVenda = dataFormatada.format(data);
@@ -29,9 +28,22 @@ public class Venda {
     public String getIdDaVenda() {
     	return this.idDaVenda;
     }
+    
+    public void setID(String ID) {
+    	this.idDaVenda = ID;
+    }
 
     public String getDataDeVenda() {
     	return this.dataDeVenda;
     }
 
+    @Override
+    public String toString() {
+    	String retorno;
+    	retorno = this.idDaVenda + " - ID da venda" + " | " + this.dataDeVenda + " - Data da venda" + '\n' + '\n';
+    	for (ProdutoDTO produto : listaDeProdutos) {
+    		retorno += produto.toString();
+    	}
+    	return retorno;
+    }
 }
