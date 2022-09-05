@@ -25,7 +25,7 @@ public class ServiceAdministrador {
     public String listaProduto(String ID) {
     	String retorno = "";
     	for(String chave : this.depositoDeProdutos.getProdutos().keySet()) {
-    		if (this.depositoDeProdutos.get(chave).getID() == ID) {
+    		if (this.depositoDeProdutos.get(chave).getID().equals(ID)) {
     			retorno = this.depositoDeProdutos.get(chave).toString() + '\n';
     		}
     	}
@@ -43,7 +43,7 @@ public class ServiceAdministrador {
     public String listarHistorico(String data) {
     	String retorno = "";
     	for(String chave : this.historicoDeVendas.getVendas().keySet()) {
-    		if (this.historicoDeVendas.get(chave).getDataDeVenda() == data) {
+    		if (this.historicoDeVendas.get(chave).getDataDeVenda().equals(data)) {
     			retorno = this.historicoDeVendas.get(chave).toString() + '\n';
     		}
     	}
@@ -53,7 +53,7 @@ public class ServiceAdministrador {
 
     public void alteraNomeProduto(String ID, String nome) {
     	for (String chave : this.depositoDeProdutos.getProdutos().keySet()) {
-    		if (this.depositoDeProdutos.get(chave).getID() == ID) {
+    		if (this.depositoDeProdutos.get(chave).getID().equals(ID)) {
     			this.depositoDeProdutos.get(chave).setNome(nome);
     		}
     	}
@@ -61,7 +61,7 @@ public class ServiceAdministrador {
 
     public void alteraPrecoProduto(String ID, double preco) {
     	for (String chave : this.depositoDeProdutos.getProdutos().keySet()) {
-    		if (this.depositoDeProdutos.get(chave).getID() == ID) {
+    		if (this.depositoDeProdutos.get(chave).getID().equals(ID)) {
     			this.depositoDeProdutos.get(chave).setPreco(preco);
     		}
     	}
