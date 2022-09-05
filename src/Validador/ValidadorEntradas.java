@@ -26,7 +26,16 @@ public class ValidadorEntradas {
 		if (argumento == null) {
 			throw new NullPointerException(this.nulo);
 		}
-		if (argumento > 0) {
+		if (argumento < 0) {
+			throw new IllegalArgumentException(this.nPositivo);
+		}
+	}
+	
+	public void validaPositivo (Double argumento) {
+		if (argumento == null) {
+			throw new NullPointerException(this.nulo);
+		}
+		if (argumento < 0) {
 			throw new IllegalArgumentException(this.nPositivo);
 		}
 	}
