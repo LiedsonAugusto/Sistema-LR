@@ -82,5 +82,13 @@ public class ServiceAdministrador {
     		this.depositoDeProdutos.remove(chave);
     	}
     }
+    
+    public int tamanhoDeposito(){
+    	return this.depositoDeProdutos.getProdutos().size();
+    }
+    
+    public int tamanhoHistorico() {
+    	return this.historicoDeVendas.getVendas().size();
+    }
 
 }
