@@ -1,8 +1,10 @@
 package Produtos;
 
+import java.util.Objects;
+
 public class ProdutoDTO {
 
-    private String ID;
+	private String ID;
     private String nome;
     private double preco;
     private int quantidade;
@@ -30,5 +32,22 @@ public class ProdutoDTO {
     public String toString() {
     	return this.ID + " | " + this.nome + " | " + this.quantidade + " Itens em estoque | " + this.preco + " R$";
     }
+    
+    @Override
+	public int hashCode() {
+		return Objects.hash(ID);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProdutoDTO other = (ProdutoDTO) obj;
+		return Objects.equals(ID, other.ID);
+	}
 
 }

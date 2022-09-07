@@ -21,7 +21,7 @@ public class Produto {
     	this.nome = novoNome;
     }
 
-    public double getpreco() {
+    public double getPreco() {
     	return this.preco;
     }
     
@@ -40,6 +40,10 @@ public class Produto {
     @Override
     public String toString() {
     	return this.ID + " | " + this.nome + " | " + this.quantidade + " Itens em estoque | " + this.preco + " R$";
+    }
+    
+    public String toStringF() {
+    	return this.ID + " | " + this.nome + " | " + this.preco + " R$";
     }
 
 }

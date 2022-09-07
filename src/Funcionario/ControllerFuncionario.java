@@ -1,45 +1,50 @@
 package Funcionario;
 
+import Validador.ValidadorEntradas;
+
 public class ControllerFuncionario {
 
-    private validadorEntradas validadorEntradas;
-
+    private ValidadorEntradas validadorEntradas;
     private ServiceFuncionario serviceFuncionario;
 
     public ControllerFuncionario(ServiceFuncionario serviceFuncionario) {
-
+    	this.serviceFuncionario = serviceFuncionario;
+    	this.validadorEntradas = new ValidadorEntradas();
     }
 
-    public void concluirVenda() {
-
+    public void concluirVenda(String idVenda) {
+    	this.validadorEntradas.valida(idVenda);
+    	this.serviceFuncionario.concluirVenda(idVenda);
     }
 
-    public void adicionarProdutoEmVenda(String idProduto, Date dataDeVenda) {
-
+    public void adicionarProduto(String idProduto, String idVenda, int quantidade) {
+    	this.validadorEntradas.valida(new String[] {idProduto, idVenda});
+    	this.validadorEntradas.validaPositivo(quantidade);
+    	this.serviceFuncionario.adicionarProduto(idProduto, idVenda, quantidade);
     }
 
-    public void adicionarProduto(String idProduto, String nome, double valor, int quantidade) {
-
-    }
-
-    public void removerProduto(String idProduto) {
-
+    public void removerProduto(String idVenda, String idProduto) {
+    	this.validadorEntradas.valida(new String[] {idProduto, idVenda});
+    	this.serviceFuncionario.removerProduto(idVenda, idProduto);
     }
 
     public void removerVenda(String idVenda) {
-
+    	this.validadorEntradas.valida(idVenda);
+    	this.serviceFuncionario.removerVenda(idVenda);
     }
 
-    public void visualizarProduto(String idProduto) {
-
+    public String visualizarProduto(String idProduto) {
+    	this.validadorEntradas.valida(idProduto);
+    	return this.serviceFuncionario.visualizarProduto(idProduto);
     }
 
-    public void visualizarDestoque() {
-
+    public String visualizarEstoque() {
+    	return this.serviceFuncionario.visualizarEstoque();
     }
 
-    public void visualizarVenda(String idVenda) {
-
+    public String visualizarVenda(String idVenda) {
+    	this.validadorEntradas.valida(idVenda);
+    	return this.serviceFuncionario.visualizarVenda(idVenda);
     }
 
     public void visualizarHistoricoDeVendas() {
