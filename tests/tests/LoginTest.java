@@ -1,15 +1,18 @@
 package tests;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.Test;
 
 class LoginTest extends TestesGerais{
 
 	@Test
-	void testValidaLogADM() {
-		String id = "IDADM", senha = "SENHAADM";
-		Assertions.assertEquals(true, controllerLogin.validaLoginAdm(id, senha));
+	void testValidaLogFuncionario() {
+		try {
+			controllerLogin.validaLoginFuncionario(null, null);
+			fail("Era esperado uma exception por parametros nulos.");
+		} catch (NullPointerException npe) {}
 	}
 
 }

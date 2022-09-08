@@ -1,10 +1,6 @@
 package tests;
 
-import static org.junit.jupiter.api.Assertions.fail;
-
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import Administrador.ControllerAdministrador;
 import Administrador.ServiceAdministrador;
 import Funcionario.ControllerFuncionario;
@@ -22,6 +18,10 @@ class TestesGerais {
 	ControllerFuncionario controllerFuncionario;
 	DepositoDeProdutos depositoDeProdutos;
 	HistoricoDeVendas historicoDeVendas;
+	
+	String nulo = "Era esperado uma Exception ao passar parâmetros NULOS";
+	String vazio = "Era esperado uma Exception ao passar marâmetros VAZIOS";
+	String rte = "Era esperado uma Runtime Exception";
 
 	@BeforeEach
 	void setUp(){
