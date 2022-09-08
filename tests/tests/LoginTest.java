@@ -11,8 +11,13 @@ class LoginTest extends TestesGerais{
 	void testValidaLogFuncionario() {
 		try {
 			controllerLogin.validaLoginFuncionario(null, null);
-			fail("Era esperado uma exception por parametros nulos.");
+			fail(nulo);
 		} catch (NullPointerException npe) {}
+		
+		try {
+			controllerLogin.validaLoginFuncionario("", "");
+			fail(vazio);
+		} catch (IllegalArgumentException iae) {}
 	}
 
 }

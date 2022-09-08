@@ -19,6 +19,11 @@ class TestesGerais {
 	DepositoDeProdutos depositoDeProdutos;
 	HistoricoDeVendas historicoDeVendas;
 	
+	String idAdm = "IDADM";
+	String idFuncionario = "IDFUNCIONARIO";
+	String senhaADM = "SENHAADM";
+	String senhaFuncionario = "SENHAFUNCIONARIO";
+	
 	String nulo = "Era esperado uma Exception ao passar parâmetros NULOS";
 	String vazio = "Era esperado uma Exception ao passar marâmetros VAZIOS";
 	String rte = "Era esperado uma Runtime Exception";
@@ -31,7 +36,7 @@ class TestesGerais {
 		controllerAdministrador = new ControllerAdministrador(new ServiceAdministrador(historicoDeVendas, depositoDeProdutos));
 		controllerLogin = new ControllerLogin(new ServiceLogin(new RepositoryContas()));
 		
-		controllerLogin.adicionaADM("IDADM", "SENHAADM", "ADM");
-		controllerLogin.adicionaFuncionario("IDFUNCIONARIO", "SENHAFUNCIONARIO", "FUNCIONARIO");
+		controllerLogin.adicionaADM(idAdm, senhaADM, "ADM");
+		controllerLogin.adicionaFuncionario(idFuncionario, senhaFuncionario, "FUNCIONARIO");
 	}
 }
