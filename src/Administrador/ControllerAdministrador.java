@@ -10,6 +10,7 @@ public class ControllerAdministrador {
 
     public ControllerAdministrador(ServiceAdministrador serviceAdministrador) {
     	this.serviceAdministrador = serviceAdministrador;
+    	this.validadorEntradas = new ValidadorEntradas();
     }
 
     public String listarDeposito() {

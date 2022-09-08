@@ -6,7 +6,7 @@ public class Administrador {
     private String ID;
     private String senha;
 
-    public Administrador(String ID, String nome, String senha) {
+    public Administrador(String ID, String senha, String nome) {
     	this.nome = nome;
     	this.ID = ID;
     	this.senha = senha;

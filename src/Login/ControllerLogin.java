@@ -6,6 +6,11 @@ public class ControllerLogin {
 
     private ServiceLogin serviceLogin;
     private ValidadorEntradas validador;
+    
+    public ControllerLogin(ServiceLogin servicelogin) {
+    	this.serviceLogin = servicelogin;
+    	this.validador = new ValidadorEntradas();
+    }
 
     public boolean validaLoginFuncionario(String ID, String senha) {
     	this.validador.valida(new String[] {ID, senha});

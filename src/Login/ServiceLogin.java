@@ -32,8 +32,8 @@ public class ServiceLogin {
     	this.repositoryContas.removeFuncionario(idFuncionario);
     }
 
-    public void adicionaADM(String ID, String nome, String senha) {
-    	this.repositoryContas.putAdministrador(ID, new Administrador(ID, nome, senha));
+    public void adicionaADM(String ID, String senha, String nome) {
+    	this.repositoryContas.putAdministrador(ID, new Administrador(ID, senha, nome));
     }
 
     public void removeADM(String ID) {
