@@ -37,7 +37,7 @@ public class ServiceAdministrador {
     public String listarHistorico() {
     	String retorno = "";
     	for(String chave : this.historicoDeVendas.getVendas().keySet()) {
-    		retorno += this.historicoDeVendas.get(chave).toString() + '\n';
+    		retorno += this.historicoDeVendas.get(chave).toStringApenasVendas() + '\n';
     	}
     	return retorno;
     }

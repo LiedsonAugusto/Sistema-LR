@@ -44,11 +44,21 @@ public class Venda {
     @Override
     public String toString() {
     	String retorno;
-    	retorno = this.idDaVenda + " - ID da venda" + " | " + this.dataDeVenda + " - Data da venda" + '\n' + '\n';
+    	retorno = this.idDaVenda + " - ID da venda" + " | " + this.dataDeVenda + " - Data da venda" + " | " + this.statusCompra() + '\n';
     	for (ProdutoDTO produto : listaDeProdutos) {
-    		retorno += produto.toString();
+    		retorno += produto.toString() + '\n';
     	}
     	return retorno;
+    }
+    
+    public String toStringApenasVendas() {
+    	String retorno;
+    	retorno = this.idDaVenda + " - ID da venda" + " | " + this.dataDeVenda + " - Data da venda" + " | " + this.statusCompra();
+    	return retorno;
+    }
+    
+    private String statusCompra() {
+    	return this.concluida ? "Concluida" : "Em andamento";
     }
     
     public boolean isConcluida() {
