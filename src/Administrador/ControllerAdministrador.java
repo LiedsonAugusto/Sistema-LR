@@ -1,5 +1,7 @@
 package Administrador;
 
+import java.util.Set;
+
 import Validador.ValidadorEntradas;
 
 public class ControllerAdministrador {
@@ -31,7 +33,7 @@ public class ControllerAdministrador {
     	if (this.serviceAdministrador.tamanhoHistorico() == 0) {
     		throw new RuntimeException("Erro, depósito está vazio.\n");
     	}
-    	return this.serviceAdministrador.listarDeposito();
+    	return this.serviceAdministrador.listarHistorico();
     }
 
     public String listarHistorico(String data) {
@@ -71,6 +73,23 @@ public class ControllerAdministrador {
     		throw new RuntimeException("Erro, depósito está vazio.\n");
     	}
     	this.serviceAdministrador.limparDeposito();
+    }
+    
+    public int tamanhoDeposito() {
+    	return this.serviceAdministrador.tamanhoDeposito();
+    }
+    
+    public int tamanhoHistorico() {
+    	return this.serviceAdministrador.tamanhoHistorico();
+    }
+    
+    public Set<String> getDepositoDeProdutos(){
+    	return this.serviceAdministrador.getDepositoDeProdutos();
+    }
+
+    
+    public Set<String> getHistoricoDeVendas(){
+    	return this.serviceAdministrador.getHistoricoDeVendas();
     }
 
 }

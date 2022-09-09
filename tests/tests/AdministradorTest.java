@@ -50,6 +50,7 @@ class AdministradorTest extends TestesGerais{
 	
 	@Test
 	void testListaProduto() {
+		String idProduto1;
 		try {
 			controllerAdministrador.listaProduto(null);
 			fail(nulo);
@@ -61,11 +62,11 @@ class AdministradorTest extends TestesGerais{
 		} catch (IllegalArgumentException iae) {}
 		
 		try {
-			String idProduto1 = controllerAdministrador.adicionaProduto("ESCOVA", -1111);
+			idProduto1 = controllerAdministrador.adicionaProduto("ESCOVA", -1111);
 			fail(positivo);
 		} catch (IllegalArgumentException iae) {}
 		
-		String idProduto1 = controllerAdministrador.adicionaProduto("ESCOVA", 1111);
+		idProduto1 = controllerAdministrador.adicionaProduto("ESCOVA", 1111);
 		String toStringProduto1 = "1 | ESCOVA | 1 Itens em estoque | 1111,00 R$";
 		assertEquals(toStringProduto1 + '\n', controllerAdministrador.listaProduto(idProduto1));
 		
@@ -79,6 +80,33 @@ class AdministradorTest extends TestesGerais{
 			controllerAdministrador.listaProduto(idProduto1);
 		} catch (IllegalArgumentException iae) {} 
 		
+	}
+	
+	@Test
+	void testListarHistorico() {
+		try {
+			controllerAdministrador.listarHistorico();
+			fail(rte);
+		} catch(RuntimeException rte) {}
+		
+	}
+	
+	@Test
+	void testAlteraNomeProduto() {
+		try {
+			controllerAdministrador.alteraNomeProduto(null, null);
+			fail(nulo);
+		} catch (NullPointerException npe) {}
+		try {
+			controllerAdministrador.alteraNomeProduto("", " ");
+			fail(iae);
+		} catch (IllegalArgumentException iae) {}
+		try {
+			controllerAdministrador.alteraNomeProduto("1111", "TESTE");
+			fail(iae);
+		} catch (IllegalArgumentException iae) {}
+		controllerAdministrador.adicionaProduto("TV", 3000);
+		controllerAdministrador.alteraNomeProduto("1", "NOVATV");
 	}
 
 }
