@@ -22,9 +22,10 @@ public class ControllerLogin {
     	return this.serviceLogin.validaLoginAdm(ID, senha);
     }
 
-    public void adicionaFuncionario(String idFuncionario, String nome, String senha) {
-    	this.validador.valida(new String[] {idFuncionario, nome, senha});
-    	this.serviceLogin.adicionaFuncionario(idFuncionario, nome, senha);
+    public void adicionaFuncionario(String idFuncionario, String senha, String nome) {
+    	this.validador.valida(new String[] {idFuncionario, senha, nome});
+    	this.validador.validaNome(nome);
+    	this.serviceLogin.adicionaFuncionario(idFuncionario, senha, nome);
     }
 
     public void removeFuncionario(String idFuncionario) {
@@ -34,6 +35,7 @@ public class ControllerLogin {
 
     public void adicionaADM(String ID, String senha, String nome) {
     	this.validador.valida(new String[] {ID, senha, nome});
+    	this.validador.validaNome(nome);
     	this.serviceLogin.adicionaADM(ID, senha, nome);
     }
 

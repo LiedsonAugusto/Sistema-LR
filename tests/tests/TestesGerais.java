@@ -27,7 +27,8 @@ class TestesGerais {
 	String nulo = "Era esperado uma Exception ao passar parâmetros NULOS";
 	String vazio = "Era esperado uma Exception ao passar marâmetros VAZIOS";
 	String rte = "Era esperado uma Runtime Exception";
-
+	String nome = "Era esperado uma Exception ao passar um nome com números";
+	
 	@BeforeEach
 	void setUp(){
 		historicoDeVendas = new HistoricoDeVendas();

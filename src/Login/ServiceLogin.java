@@ -24,8 +24,8 @@ public class ServiceLogin {
     	return false;
     }
 
-    public void adicionaFuncionario(String idFuncionario, String nome, String senha) {
-    	this.repositoryContas.putFuncionario(idFuncionario, new Funcionario(idFuncionario, nome, senha));
+    public void adicionaFuncionario(String idFuncionario, String senha, String nome) {
+    	this.repositoryContas.putFuncionario(idFuncionario, new Funcionario(idFuncionario, senha, nome));
     }
 
     public void removeFuncionario(String idFuncionario) {

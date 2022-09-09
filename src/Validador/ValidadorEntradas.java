@@ -12,7 +12,7 @@ public class ValidadorEntradas {
 			throw new IllegalArgumentException(this.vazio);
 		}
 		if (argumento.equals(null)) {
-			throw new NullPointerException(this.nulo);
+			throw new NullPointerException(this.nulo); 
 		}
 	}
 	
@@ -42,7 +42,7 @@ public class ValidadorEntradas {
 	
 	public void validaNome(String argumento) {
 		for (char letra : argumento.toCharArray()) {
-			if (Character.getNumericValue(letra) >= 0) {
+			if (Character.isDigit(letra)) {
 				throw new IllegalArgumentException(this.nNome);
 			}
 		}
