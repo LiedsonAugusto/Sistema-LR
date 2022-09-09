@@ -53,7 +53,7 @@ public class ValidadorEntradas {
 		}
 	}
 	
-	public void validarID(DepositoDeProdutos depositoDeProduto, String ID) {
+	public void validarIDInexistente(DepositoDeProdutos depositoDeProduto, String ID) {
 		for (String chave : depositoDeProduto.getProdutos().keySet()) {
 			if (chave.equals(ID)) {
 				return;

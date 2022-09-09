@@ -32,7 +32,7 @@ public class RepositoryContas {
     	this.administradores.put(ID, administrador);
     }
 
-    public void removeAdministrador(String ID) {
+    public void removeADM(String ID) {
     	this.administradores.remove(ID);
     }
     

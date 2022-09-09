@@ -37,7 +37,7 @@ public class ServiceLogin {
     }
 
     public void removeADM(String ID) {
-    	this.removeADM(ID);
+    	this.repositoryContas.removeADM(ID);
     }
 
 }
