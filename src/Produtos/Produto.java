@@ -39,7 +39,7 @@ public class Produto {
     
     @Override
     public String toString() {
-    	return this.ID + " | " + this.nome + " | " + this.quantidade + " Itens em estoque | " + this.preco + " R$";
+    	return this.ID + " | " + this.nome + " | " + this.quantidade + " Itens em estoque | " + String.format("%.2f", this.preco) + " R$";
     }
     
     public String toStringF() {

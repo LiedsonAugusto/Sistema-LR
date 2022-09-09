@@ -7,6 +7,10 @@ public class DepositoDeProdutos {
     private HashMap<String, Produto> produtos;
     int ID = 0;
 
+    public DepositoDeProdutos() {
+    	this.produtos = new HashMap<>();
+    }
+    
     public Produto get(String ID) {
     	return this.produtos.get(ID);
     }
