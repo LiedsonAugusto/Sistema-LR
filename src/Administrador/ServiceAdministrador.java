@@ -94,5 +94,9 @@ public class ServiceAdministrador {
     public DepositoDeProdutos getDepositoDeProdutos() {
     	return this.depositoDeProdutos;
     }
+    
+    public HistoricoDeVendas getHistoricoDeVendas() {
+    	return this.historicoDeVendas;
+    }
 
 }

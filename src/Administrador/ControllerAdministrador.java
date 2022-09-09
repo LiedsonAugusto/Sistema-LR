@@ -42,6 +42,7 @@ public class ControllerAdministrador {
     	if (this.serviceAdministrador.tamanhoHistorico() == 0) {
     		throw new RuntimeException("Erro, depósito está vazio.\n");
     	}
+    	this.validadorEntradas.validarData(this.serviceAdministrador.getHistoricoDeVendas(), data);
     	return this.serviceAdministrador.listarHistorico(data);
     }
 

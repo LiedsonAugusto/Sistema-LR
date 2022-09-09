@@ -68,7 +68,11 @@ class AdministradorTest extends TestesGerais{
 		
 		String idProduto1 = controllerAdministrador.adicionaProduto("ESCOVA", 1111);
 		String toStringProduto1 = "1 | ESCOVA | 1 Itens em estoque | 1111,00 R$";
-		assertEquals(toStringProduto1 + '\n', controllerAdministrador.listaProduto(idProduto1) );
+		assertEquals(toStringProduto1 + '\n', controllerAdministrador.listaProduto(idProduto1));
+		
+		try {
+			controllerAdministrador.listaProduto("1100");
+		} catch (IllegalArgumentException iae) {}
 		
 	}
 

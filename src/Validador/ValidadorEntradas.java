@@ -1,6 +1,7 @@
 package Validador;
 
 import Produtos.DepositoDeProdutos;
+import Vendas.HistoricoDeVendas;
 
 public class ValidadorEntradas {
 	
@@ -9,6 +10,7 @@ public class ValidadorEntradas {
 	String nPositivo = "Erro por valor de menor que zero";
 	String nNome = "Erro por ter NÚMERO no nome";
 	String idInvalido = "Erro ao passar ID inexistente";
+	String dataInvalida = "Erro ao passar data inexistente";
 	
 	public void valida(String argumento) {
 		if (argumento.isBlank()) {
@@ -58,5 +60,14 @@ public class ValidadorEntradas {
 			}
 		}
 		throw new IllegalArgumentException(idInvalido); 
+	}
+	
+	public void validarData(HistoricoDeVendas historicoDeVendas, String data) {
+		for (String chave : historicoDeVendas.getVendas().keySet()) {
+			if (chave.equals(data)) {
+				return;
+			}
+		}
+		throw new IllegalArgumentException(dataInvalida); 
 	}
 }
