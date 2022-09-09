@@ -22,11 +22,14 @@ public class Venda {
     	this.concluida = false;
     }
 
-    public void adicionaProduto(ProdutoDTO produto) {
-    	if (this.listaDeProdutos.contains(produto)) {
-    		this.listaDeProdutos.
+    public void adicionaProduto(ProdutoDTO produto2) {
+    	for (ProdutoDTO produto : this.listaDeProdutos) {
+    		if (produto.equals(produto2)) {
+    			produto.adicionaMaisUm();
+    			return;
+    		}
     	}
-    	this.listaDeProdutos.add(produto);
+    	this.listaDeProdutos.add(produto2);
     }
 
     public String getIdDaVenda() {
