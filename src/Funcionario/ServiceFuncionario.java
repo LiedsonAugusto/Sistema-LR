@@ -6,6 +6,7 @@ import Produtos.DepositoDeProdutos;
 import Produtos.Produto;
 import Produtos.ProdutoDTO;
 import Vendas.HistoricoDeVendas;
+import Vendas.Venda;
 
 public class ServiceFuncionario {
 
@@ -57,5 +58,11 @@ public class ServiceFuncionario {
     public void visualizarHistoricoDeVendas() {
 
     }
+
+	public String iniciaVenda() {
+		Venda venda = new Venda();
+		this.historicoDeVendas.put(venda);
+		return venda.getIdDaVenda();
+	}
 
 }

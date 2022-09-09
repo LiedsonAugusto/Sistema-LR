@@ -11,6 +11,10 @@ public class ControllerFuncionario {
     	this.serviceFuncionario = serviceFuncionario;
     	this.validadorEntradas = new ValidadorEntradas();
     }
+    
+    public String iniviaVenda() {
+    	return this.serviceFuncionario.iniciaVenda();
+    }
 
     public void concluirVenda(String idVenda) {
     	this.validadorEntradas.valida(idVenda);
