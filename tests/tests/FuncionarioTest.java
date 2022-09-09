@@ -43,7 +43,7 @@ class FuncionarioTest extends TestesGerais{
 	@Test
 	void testVisualizaVenda() {
 		String idProduto = this.controllerAdministrador.adicionaProduto("Pétala de Rosa", 1.00);
-		String idVenda = controllerFuncionario.iniviaVenda();
+		String idVenda = controllerFuncionario.iniciaVenda();
 		String venda = "1 - ID da venda | " + controllerFuncionario.getDataVenda(idVenda) + " - Data da venda\n\n";
 		assertEquals(venda, controllerFuncionario.visualizarVenda(idVenda));
 		controllerFuncionario.adicionarProduto(idProduto, idVenda, 2);

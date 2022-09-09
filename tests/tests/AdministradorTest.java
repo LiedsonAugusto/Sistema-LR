@@ -96,7 +96,9 @@ class AdministradorTest extends TestesGerais{
 		controllerFuncionario.adicionarProduto("2", "1", 1);
 		controllerFuncionario.concluirVenda(idVenda);
 		
+		String retornoDaVenda = "1 - ID da venda | " + historicoDeVendas.get("1").getDataDeVenda() + " - Data da venda" + " | " + "Concluida";
 		
+		assertEquals(retornoDaVenda + '\n', controllerAdministrador.listarHistorico());
 	}
 	
 	@Test
