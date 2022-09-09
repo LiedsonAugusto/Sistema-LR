@@ -5,7 +5,12 @@ import java.util.HashMap;
 public class HistoricoDeVendas {
 
     private HashMap<String, Venda> vendas;
-    int ID = 0;
+    int ID;
+    
+    public HistoricoDeVendas() {
+    	this.vendas = new HashMap<>();
+    	this.ID = 0;
+    }
     
     public Venda get(String idVenda) {
     	return this.vendas.get(idVenda);

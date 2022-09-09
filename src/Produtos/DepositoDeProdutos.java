@@ -1,6 +1,7 @@
 package Produtos;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public class DepositoDeProdutos {
 
@@ -27,6 +28,10 @@ public class DepositoDeProdutos {
     
     public HashMap<String, Produto> getProdutos() {
     	return this.produtos;
+    }
+    
+    public Set<String> getIDs(){
+    	return this.produtos.keySet();
     }
 
 }

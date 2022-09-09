@@ -1,6 +1,7 @@
 package Funcionario;
 
 import java.util.HashMap;
+import java.util.Set;
 
 import Produtos.DepositoDeProdutos;
 import Produtos.Produto;
@@ -45,8 +46,12 @@ public class ServiceFuncionario {
     public String visualizarEstoque() {
     	String produtosToString = "";
     	HashMap<String, Produto> produtos = this.depositoDeProdutos.getProdutos();
+    	if (produtos.size() == 0) {
+    		return "~~Estoque~~\n\nVazio --\n\n";
+    	}
+    	
     	for (String chave : produtos.keySet()) {
-    		produtosToString += produtos.get(chave).toString();
+    		produtosToString += produtos.get(chave).toStringF();
     	}
     	return "~~Estoque~~\n\n" + produtosToString + "\n\n";
     }
@@ -63,6 +68,14 @@ public class ServiceFuncionario {
 		Venda venda = new Venda();
 		this.historicoDeVendas.put(venda);
 		return venda.getIdDaVenda();
+	}
+	
+	public Set<String> getIDs(){
+		return this.depositoDeProdutos.getIDs();
+	}
+	
+	public String getDataVenda(String ID) {
+		return this.historicoDeVendas.get(ID).getDataDeVenda();
 	}
 
 }

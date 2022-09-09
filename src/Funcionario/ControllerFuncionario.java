@@ -39,6 +39,7 @@ public class ControllerFuncionario {
 
     public String visualizarProduto(String idProduto) {
     	this.validadorEntradas.valida(idProduto);
+    	this.validadorEntradas.validarIDInexistente(this.serviceFuncionario.getIDs(), idProduto);
     	return this.serviceFuncionario.visualizarProduto(idProduto);
     }
 
@@ -53,6 +54,10 @@ public class ControllerFuncionario {
 
     public void visualizarHistoricoDeVendas() {
 
+    }
+    
+    public String getDataVenda(String ID) {
+    	return this.serviceFuncionario.getDataVenda(ID);
     }
 
 }

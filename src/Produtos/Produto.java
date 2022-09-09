@@ -43,7 +43,7 @@ public class Produto {
     }
     
     public String toStringF() {
-    	return this.ID + " | " + this.nome + " | " + this.preco + " R$";
+    	return this.ID + " | " + this.nome + " | " + String.format("%.2f", this.preco) + " R$";
     }
 
 }
