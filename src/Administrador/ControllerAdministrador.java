@@ -22,9 +22,6 @@ public class ControllerAdministrador {
 
     public String listaProduto(String ID) {
     	this.validadorEntradas.valida(ID);
-    	if (this.serviceAdministrador.tamanhoDeposito() == 0) {
-    		throw new RuntimeException("Erro, depósito está vazio.\n");
-    	}
     	this.validadorEntradas.validarIDInexistente(this.serviceAdministrador.getDepositoDeProdutos(), ID);
     	return this.serviceAdministrador.listaProduto(ID);
     	
@@ -39,18 +36,12 @@ public class ControllerAdministrador {
 
     public String listarHistorico(String data) {
     	this.validadorEntradas.valida(data);
-    	if (this.serviceAdministrador.tamanhoHistorico() == 0) {
-    		throw new RuntimeException("Erro, depósito está vazio.\n");
-    	}
     	this.validadorEntradas.validarData(this.serviceAdministrador.getHistoricoDeVendas(), data);
     	return this.serviceAdministrador.listarHistorico(data);
     }
 
     public void alteraNomeProduto(String ID, String nome) {
     	this.validadorEntradas.valida(new String[] {ID, nome});
-    	if (this.serviceAdministrador.tamanhoDeposito() == 0) {
-    		throw new RuntimeException("Erro, depósito está vazio.\n");
-    	}
     	this.validadorEntradas.validarIDInexistente(this.serviceAdministrador.getDepositoDeProdutos(), ID);
     	this.serviceAdministrador.alteraNomeProduto(ID, nome);
     }
@@ -64,15 +55,13 @@ public class ControllerAdministrador {
 
     public String adicionaProduto(String nome, double preco) {
     	this.validadorEntradas.validaNome(nome);
+    	this.validadorEntradas.valida(nome);
     	this.validadorEntradas.validaPositivo(preco);
     	return this.serviceAdministrador.adicionaProduto(nome, preco);
     }
 
     public void removeProduto(String ID) {
     	this.validadorEntradas.valida(ID);
-    	if (this.serviceAdministrador.tamanhoDeposito() == 0) {
-    		throw new RuntimeException("Erro, depósito está vazio.\n");
-    	}
     	this.validadorEntradas.validarIDInexistente(this.serviceAdministrador.getDepositoDeProdutos(), ID);
     	this.serviceAdministrador.removeProduto(ID);
     }

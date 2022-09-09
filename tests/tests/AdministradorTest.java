@@ -37,11 +37,10 @@ class AdministradorTest extends TestesGerais{
 		
 		depositoDeProdutos.remove(idProduto3);
 		assertEquals(toStringProduto1 + '\n' + toStringProduto2 + '\n', controllerAdministrador.listarDeposito());
-		
 		depositoDeProdutos.remove(idProduto2);
 		assertEquals(toStringProduto1 + '\n', controllerAdministrador.listarDeposito());
-		
 		depositoDeProdutos.remove(idProduto1);
+		
 		try {
 			controllerAdministrador.listarDeposito();
 			fail(rte);
@@ -73,6 +72,12 @@ class AdministradorTest extends TestesGerais{
 		try {
 			controllerAdministrador.listaProduto("1100");
 		} catch (IllegalArgumentException iae) {}
+		
+		controllerAdministrador.removeProduto(idProduto1);
+		
+		try {
+			controllerAdministrador.listaProduto(idProduto1);
+		} catch (IllegalArgumentException iae) {} 
 		
 	}
 

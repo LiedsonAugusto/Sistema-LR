@@ -1,5 +1,7 @@
 package Administrador;
 
+import java.util.Set;
+
 import Produtos.DepositoDeProdutos;
 import Produtos.Produto;
 import Vendas.HistoricoDeVendas;
@@ -91,12 +93,12 @@ public class ServiceAdministrador {
     	return this.historicoDeVendas.getVendas().size();
     }
     
-    public DepositoDeProdutos getDepositoDeProdutos() {
-    	return this.depositoDeProdutos;
+    public Set<String> getDepositoDeProdutos() {
+    	return this.depositoDeProdutos.getProdutos().keySet();
     }
     
-    public HistoricoDeVendas getHistoricoDeVendas() {
-    	return this.historicoDeVendas;
+    public Set<String> getHistoricoDeVendas() {
+    	return this.historicoDeVendas.getVendas().keySet();
     }
 
 }

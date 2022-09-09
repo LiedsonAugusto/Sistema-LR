@@ -1,7 +1,6 @@
 package Validador;
 
-import Produtos.DepositoDeProdutos;
-import Vendas.HistoricoDeVendas;
+import java.util.Set;
 
 public class ValidadorEntradas {
 	
@@ -53,8 +52,8 @@ public class ValidadorEntradas {
 		}
 	}
 	
-	public void validarIDInexistente(DepositoDeProdutos depositoDeProduto, String ID) {
-		for (String chave : depositoDeProduto.getProdutos().keySet()) {
+	public void validarIDInexistente(Set<String> chaves, String ID) {
+		for (String chave : chaves) {
 			if (chave.equals(ID)) {
 				return;
 			}
@@ -62,8 +61,8 @@ public class ValidadorEntradas {
 		throw new IllegalArgumentException(idInvalido); 
 	}
 	
-	public void validarData(HistoricoDeVendas historicoDeVendas, String data) {
-		for (String chave : historicoDeVendas.getVendas().keySet()) {
+	public void validarData(Set<String> chaves, String data) {
+		for (String chave : chaves) {
 			if (chave.equals(data)) {
 				return;
 			}
