@@ -1,11 +1,14 @@
 package Validador;
 
+import Produtos.DepositoDeProdutos;
+
 public class ValidadorEntradas {
 	
 	String vazio = "Erro por valor de entrada vazia";
 	String nulo = "Erro por valor de entrada nula";
 	String nPositivo = "Erro por valor de menor que zero";
 	String nNome = "Erro por ter NÚMERO no nome";
+	String idInvalido = "Erro ao passar ID inexistente";
 	
 	public void valida(String argumento) {
 		if (argumento.isBlank()) {
@@ -46,5 +49,14 @@ public class ValidadorEntradas {
 				throw new IllegalArgumentException(this.nNome);
 			}
 		}
+	}
+	
+	public void validarID(DepositoDeProdutos depositoDeProduto, String ID) {
+		for (String chave : depositoDeProduto.getProdutos().keySet()) {
+			if (chave.equals(ID)) {
+				return;
+			}
+		}
+		throw new IllegalArgumentException(idInvalido); 
 	}
 }

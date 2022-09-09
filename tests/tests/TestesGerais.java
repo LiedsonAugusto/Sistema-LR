@@ -28,6 +28,7 @@ class TestesGerais {
 	String vazio = "Era esperado uma Exception ao passar marâmetros VAZIOS";
 	String rte = "Era esperado uma Runtime Exception";
 	String nome = "Era esperado uma Exception ao passar um nome com números";
+	String positivo = "Era esperado um parâmetro com número positivo";
 	
 	@BeforeEach
 	void setUp(){

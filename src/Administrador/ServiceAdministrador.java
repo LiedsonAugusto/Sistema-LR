@@ -90,5 +90,9 @@ public class ServiceAdministrador {
     public int tamanhoHistorico() {
     	return this.historicoDeVendas.getVendas().size();
     }
+    
+    public DepositoDeProdutos getDepositoDeProdutos() {
+    	return this.depositoDeProdutos;
+    }
 
 }

@@ -25,6 +25,7 @@ public class ControllerAdministrador {
     	if (this.serviceAdministrador.tamanhoDeposito() == 0) {
     		throw new RuntimeException("Erro, depósito está vazio.\n");
     	}
+    	this.validadorEntradas.validarID(this.serviceAdministrador.getDepositoDeProdutos(), ID);
     	return this.serviceAdministrador.listaProduto(ID);
     	
     }
@@ -49,12 +50,14 @@ public class ControllerAdministrador {
     	if (this.serviceAdministrador.tamanhoDeposito() == 0) {
     		throw new RuntimeException("Erro, depósito está vazio.\n");
     	}
+    	this.validadorEntradas.validarID(this.serviceAdministrador.getDepositoDeProdutos(), ID);
     	this.serviceAdministrador.alteraNomeProduto(ID, nome);
     }
 
     public void alteraPrecoProduto(String ID, double preco) {
     	this.validadorEntradas.validaNome(ID);
     	this.validadorEntradas.validaPositivo(preco);
+    	this.validadorEntradas.validarID(this.serviceAdministrador.getDepositoDeProdutos(), ID);
     	this.serviceAdministrador.alteraPrecoProduto(ID, preco);
     }
 
@@ -69,6 +72,7 @@ public class ControllerAdministrador {
     	if (this.serviceAdministrador.tamanhoDeposito() == 0) {
     		throw new RuntimeException("Erro, depósito está vazio.\n");
     	}
+    	this.validadorEntradas.validarID(this.serviceAdministrador.getDepositoDeProdutos(), ID);
     	this.serviceAdministrador.removeProduto(ID);
     }
 

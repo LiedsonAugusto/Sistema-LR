@@ -48,5 +48,28 @@ class AdministradorTest extends TestesGerais{
 		} catch (RuntimeException rte) {}
 		
 	}
+	
+	@Test
+	void testListaProduto() {
+		try {
+			controllerAdministrador.listaProduto(null);
+			fail(nulo);
+		} catch (NullPointerException npe) {}
+		
+		try {
+			controllerAdministrador.listaProduto("");
+			fail(vazio);
+		} catch (IllegalArgumentException iae) {}
+		
+		try {
+			String idProduto1 = controllerAdministrador.adicionaProduto("ESCOVA", -1111);
+			fail(positivo);
+		} catch (IllegalArgumentException iae) {}
+		
+		String idProduto1 = controllerAdministrador.adicionaProduto("ESCOVA", 1111);
+		String toStringProduto1 = "1 | ESCOVA | 1 Itens em estoque | 1111,00 R$";
+		assertEquals(toStringProduto1 + '\n', controllerAdministrador.listaProduto(idProduto1) );
+		
+	}
 
 }
