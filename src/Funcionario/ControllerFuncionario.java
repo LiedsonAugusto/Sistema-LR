@@ -12,7 +12,7 @@ public class ControllerFuncionario {
     	this.validadorEntradas = new ValidadorEntradas();
     }
     
-    public String iniviaVenda() {
+    public String iniciaVenda() {
     	return this.serviceFuncionario.iniciaVenda();
     }
 

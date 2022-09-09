@@ -110,5 +110,5 @@ class AdministradorTest extends TestesGerais{
 		String toStringProduto1 = "1 | NOVATV | 1 Itens em estoque | 3000,00 R$";
 		assertEquals(toStringProduto1 + '\n', controllerAdministrador.listaProduto("1"));
 	}
-
+		
 }
