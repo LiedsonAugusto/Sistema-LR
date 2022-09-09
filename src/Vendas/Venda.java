@@ -23,6 +23,9 @@ public class Venda {
     }
 
     public void adicionaProduto(ProdutoDTO produto) {
+    	if (this.listaDeProdutos.contains(produto)) {
+    		this.listaDeProdutos.
+    	}
     	this.listaDeProdutos.add(produto);
     }
 

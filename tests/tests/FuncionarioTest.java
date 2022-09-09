@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 class FuncionarioTest extends TestesGerais{
 
 	String produto = "1 | Pétala de Rosa | 1,00 R$";
+	String produtoDTO = "1 | Pétala de Rosa | 1,00 R$ | 2x | 2,00 R$";
 	String estoque = "~~Estoque~~\n\n" + produto + "\n\n";
 	String estoqueVazio = "~~Estoque~~\n\nVazio --\n\n";
 	
@@ -43,7 +44,10 @@ class FuncionarioTest extends TestesGerais{
 	void testVisualizaVenda() {
 		String idProduto = this.controllerAdministrador.adicionaProduto("Pétala de Rosa", 1.00);
 		String idVenda = controllerFuncionario.iniviaVenda();
-		String venda = "1 - ID da venda | " + controllerFuncionario.getDataVenda(idVenda) + " - Data da venda";
+		String venda = "1 - ID da venda | " + controllerFuncionario.getDataVenda(idVenda) + " - Data da venda\n\n";
+		assertEquals(venda, controllerFuncionario.visualizarVenda(idVenda));
+		controllerFuncionario.adicionarProduto(idProduto, idVenda, 2);
+		venda = "1 - ID da venda | " + controllerFuncionario.getDataVenda(idVenda) + " - Data da venda\n\n" + produtoDTO;
 		assertEquals(venda, controllerFuncionario.visualizarVenda(idVenda));
 	}
 }

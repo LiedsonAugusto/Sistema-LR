@@ -30,7 +30,7 @@ public class ProdutoDTO {
     
     @Override
     public String toString() {
-    	return this.ID + " | " + this.nome + " | " + this.quantidade + " Itens em estoque | " + this.preco + " R$";
+    	return this.ID + " | " + this.nome + " | " + String.format("%.2f", this.preco) + " R$ | " + this.quantidade + "x | " + String.format("%.2f", this.preco * this.quantidade) + " R$";
     }
     
     @Override
