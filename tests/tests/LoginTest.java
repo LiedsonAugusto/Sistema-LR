@@ -60,6 +60,10 @@ class LoginTest extends TestesGerais{
 			fail(nome);
 		} catch (IllegalArgumentException iae) {}
 		
+		try {
+			controllerLogin.adicionaFuncionario(idFuncionario, "Senha1", "nome");
+		} catch (IllegalArgumentException iae) {}
+		
 		controllerLogin.adicionaFuncionario("ID1", "Senha1", "nome");
 		assertEquals(true, controllerLogin.validaLoginFuncionario("ID1", "Senha1"));
 		controllerLogin.removeFuncionario("ID1");
@@ -81,6 +85,10 @@ class LoginTest extends TestesGerais{
 		try {
 			controllerLogin.adicionaADM("ID1", "Senha1", "nome1");
 			fail(nome);
+		} catch (IllegalArgumentException iae) {}
+		
+		try {
+			controllerLogin.adicionaADM(idAdm, "Senha1", "nome");
 		} catch (IllegalArgumentException iae) {}
 		
 

@@ -4,11 +4,12 @@ import java.util.Set;
 
 public class ValidadorEntradas {
 	
-	String vazio = "Erro por valor de entrada vazia";
-	String nulo = "Erro por valor de entrada nula";
-	String nPositivo = "Erro por valor de menor que zero";
+	String vazio = "Erro ao passar valor de entrada vazia";
+	String nulo = "Erro ao passar valor de entrada nula";
+	String nPositivo = "Erro ao passar um valor menor que zero";
 	String nNome = "Erro por ter NÚMERO no nome";
-	String idInvalido = "Erro ao passar ID inexistente";
+	String idInvalido = "Erro ao passar um ID inexistente";
+	String idExistente = "Erro ao passar um ID existente";
 	String dataInvalida = "Erro ao passar data inexistente";
 	
 	public void valida(String argumento) {
@@ -59,6 +60,14 @@ public class ValidadorEntradas {
 			}
 		}
 		throw new IllegalArgumentException(idInvalido); 
+	}
+	
+	public void validaIDExistente(Set<String> chaves, String ID) {
+		for (String chave : chaves) {
+			if (chave.equals(ID)) {
+				throw new IllegalArgumentException(idExistente);
+			}
+		}
 	}
 	
 	public void validarData(Set<String> chaves, String data) {

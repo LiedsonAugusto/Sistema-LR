@@ -1,6 +1,7 @@
 package Login;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public class RepositoryContas {
 
@@ -36,6 +37,12 @@ public class RepositoryContas {
     	this.administradores.remove(ID);
     }
     
+    public Set<String> getChaveFuncionario() {
+    	return this.funcionarios.keySet();
+    }
     
+    public Set<String> getChaveADM(){
+    	return this.administradores.keySet();
+    }
 
 }

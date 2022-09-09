@@ -25,6 +25,7 @@ public class ControllerLogin {
     public void adicionaFuncionario(String idFuncionario, String senha, String nome) {
     	this.validador.valida(new String[] {idFuncionario, senha, nome});
     	this.validador.validaNome(nome);
+    	this.validador.validaIDExistente(this.serviceLogin.getChavesFuncionario(), idFuncionario);
     	this.serviceLogin.adicionaFuncionario(idFuncionario, senha, nome);
     }
 
@@ -36,6 +37,7 @@ public class ControllerLogin {
     public void adicionaADM(String ID, String senha, String nome) {
     	this.validador.valida(new String[] {ID, senha, nome});
     	this.validador.validaNome(nome);
+    	this.validador.validaIDExistente(this.serviceLogin.getChavesFuncionario(), ID);
     	this.serviceLogin.adicionaADM(ID, senha, nome);
     }
 

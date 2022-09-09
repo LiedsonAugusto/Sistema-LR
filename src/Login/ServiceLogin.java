@@ -1,5 +1,7 @@
 package Login;
 
+import java.util.Set;
+
 public class ServiceLogin {
 
     private RepositoryContas repositoryContas;
@@ -38,6 +40,14 @@ public class ServiceLogin {
 
     public void removeADM(String ID) {
     	this.repositoryContas.removeADM(ID);
+    }
+    
+    public Set<String> getChavesFuncionario() {
+    	return this.repositoryContas.getChaveFuncionario();
+    }
+    
+    public Set<String> getChavesADM() {
+    	return this.repositoryContas.getChaveADM();
     }
 
 }
