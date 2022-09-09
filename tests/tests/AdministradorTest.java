@@ -88,6 +88,14 @@ class AdministradorTest extends TestesGerais{
 			controllerAdministrador.listarHistorico();
 			fail(rte);
 		} catch(RuntimeException rte) {}
+		controllerAdministrador.adicionaProduto("TV", 1000);
+		controllerAdministrador.adicionaProduto("CAMA", 1500);
+		
+		String idVenda = controllerFuncionario.iniciaVenda();
+		controllerFuncionario.adicionarProduto("1", "1", 3);
+		controllerFuncionario.adicionarProduto("2", "1", 1);
+		controllerFuncionario.concluirVenda(idVenda);
+		
 		
 	}
 	

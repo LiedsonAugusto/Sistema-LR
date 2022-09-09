@@ -41,7 +41,7 @@ public class Venda {
     @Override
     public String toString() {
     	String retorno;
-    	retorno = this.idDaVenda + " - ID da venda" + " | " + this.dataDeVenda + " - Data da venda" + '\n';
+    	retorno = this.idDaVenda + " - ID da venda" + " | " + this.dataDeVenda + " - Data da venda" + " | " + this.statusCompra() + '\n';
     	for (ProdutoDTO produto : listaDeProdutos) {
     		retorno += produto.toString() + '\n';
     	}
@@ -50,8 +50,12 @@ public class Venda {
     
     public String toStringApenasVendas() {
     	String retorno;
-    	retorno = this.idDaVenda + " - ID da venda" + " | " + this.dataDeVenda + " - Data da venda";
+    	retorno = this.idDaVenda + " - ID da venda" + " | " + this.dataDeVenda + " - Data da venda" + " | " + this.statusCompra();
     	return retorno;
+    }
+    
+    private String statusCompra() {
+    	return this.concluida ? "Concluida" : "Em andamento";
     }
     
     public boolean isConcluida() {
