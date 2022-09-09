@@ -107,6 +107,8 @@ class AdministradorTest extends TestesGerais{
 		} catch (IllegalArgumentException iae) {}
 		controllerAdministrador.adicionaProduto("TV", 3000);
 		controllerAdministrador.alteraNomeProduto("1", "NOVATV");
+		String toStringProduto1 = "1 | NOVATV | 1 Itens em estoque | 3000,00 R$";
+		assertEquals(toStringProduto1 + '\n', controllerAdministrador.listaProduto("1"));
 	}
 
 }
