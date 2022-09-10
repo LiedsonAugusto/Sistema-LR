@@ -36,5 +36,6 @@ public class DepositoDeProdutos {
 
     public void limpar() {
     	this.produtos = new HashMap<>();
+    	this.ID = 0;
     }
 }
