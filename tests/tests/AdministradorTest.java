@@ -116,15 +116,14 @@ class AdministradorTest extends TestesGerais{
 			fail(iae);
 		} catch(IllegalArgumentException iae) {}
 		
-		//AJEITAR DPS
-//		controllerAdministrador.adicionaProduto("TV", 1000);
-//		String idVenda = controllerFuncionario.iniciaVenda();
-//		controllerFuncionario.adicionarProduto("1", "1", 3);
-//		controllerFuncionario.concluirVenda(idVenda);
-//		String retorno = "1 - ID da venda | " + historicoDeVendas.get("1").getDataDeVenda() + " - Data da venda | Concluida" + 
-//				'\n' + "1 | TV | 1000,00 R$ | 3x | 3000,00 R$" + '\n';
-//				
-//		assertEquals(retorno + '\n', controllerAdministrador.listarHistorico(historicoDeVendas.get("1").getDataDeVenda()));
+		controllerAdministrador.adicionaProduto("TV", 1000);
+		String idVenda = controllerFuncionario.iniciaVenda();
+		controllerFuncionario.adicionarProduto("1", "1", 3);
+		controllerFuncionario.concluirVenda(idVenda);
+		String retorno = "1 - ID da venda | " + historicoDeVendas.get("1").getDataDeVenda() + " - Data da venda | Concluida" + 
+				'\n' + "1 | TV | 1000,00 R$ | 3x | 3000,00 R$" + '\n';
+				
+		assertEquals(retorno + '\n', controllerAdministrador.listarHistorico(historicoDeVendas.get("1").getDataDeVenda()));
 		
 	}
 	

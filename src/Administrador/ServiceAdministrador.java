@@ -1,5 +1,6 @@
 package Administrador;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import Produtos.DepositoDeProdutos;
@@ -99,4 +100,12 @@ public class ServiceAdministrador {
     	return this.historicoDeVendas.getVendas().keySet();
     }
 
+    public Set<String> getDatasDeHistorico(){
+    	Set<String> datas = new HashSet<>();
+    	for(String chave : this.historicoDeVendas.getVendas().keySet()) {
+    		datas.add(this.historicoDeVendas.get(chave).getDataDeVenda());
+    	}
+    	return datas;
+    }
+    
 }

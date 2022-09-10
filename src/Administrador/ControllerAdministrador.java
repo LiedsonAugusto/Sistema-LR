@@ -1,5 +1,6 @@
 package Administrador;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import Validador.ValidadorEntradas;
@@ -38,7 +39,7 @@ public class ControllerAdministrador {
 
     public String listarHistorico(String data) {
     	this.validadorEntradas.valida(data);
-    	this.validadorEntradas.validarData(this.serviceAdministrador.getHistoricoDeVendas(), data);
+    	this.validadorEntradas.validarData(this.serviceAdministrador.getDatasDeHistorico(), data);
     	return this.serviceAdministrador.listarHistorico(data);
     }
 
@@ -92,4 +93,7 @@ public class ControllerAdministrador {
     	return this.serviceAdministrador.getHistoricoDeVendas();
     }
 
+    public Set<String> getDatasDeHistorico(){
+    	return this.serviceAdministrador.getDatasDeHistorico();
+    }
 }
