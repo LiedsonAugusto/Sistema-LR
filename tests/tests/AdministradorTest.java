@@ -238,11 +238,25 @@ class AdministradorTest extends TestesGerais{
 	}
 	
 	@Test
-	void testTamnhoDeposito() {
+	void testTamanhoDeposito() {
 		assertEquals(0, controllerAdministrador.tamanhoDeposito());
 		controllerAdministrador.adicionaProduto("TV", 3000);
 		assertEquals(1, controllerAdministrador.tamanhoDeposito());
 		controllerAdministrador.removeProduto("1");
 		assertEquals(0, controllerAdministrador.tamanhoDeposito());
+	}
+	
+	@Test
+	void testTamanhoHistorico() {
+		assertEquals(0, controllerAdministrador.tamanhoHistorico());
+		controllerAdministrador.adicionaProduto("TV", 1000);
+		controllerAdministrador.adicionaProduto("CAMA", 1500);
+		String idVenda = controllerFuncionario.iniciaVenda();
+		controllerFuncionario.adicionarProduto("1", "1", 3);
+		controllerFuncionario.adicionarProduto("2", "1", 1);
+		controllerFuncionario.concluirVenda(idVenda);
+		assertEquals(1, controllerAdministrador.tamanhoHistorico());
+		controllerFuncionario.removerVenda("1");
+		assertEquals(0, controllerAdministrador.tamanhoHistorico());
 	}
 }
