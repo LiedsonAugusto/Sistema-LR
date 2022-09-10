@@ -1,9 +1,11 @@
 package Inicializador;
+
 import Administrador.ControllerAdministrador;
 import Administrador.ServiceAdministrador;
 import Funcionario.ControllerFuncionario;
 import Funcionario.ServiceFuncionario;
-import Login.ControllerLogin;
+import Login.ControllerLoginAdministrador;
+import Login.ControllerLoginFuncionario;
 import Login.RepositoryContas;
 import Login.ServiceLogin;
 import Produtos.DepositoDeProdutos;
@@ -20,7 +22,8 @@ public class Inicializador {
 	ServiceFuncionario serviceFuncionario;
 
 	// Login
-	ControllerLogin controllerLogin;
+	ControllerLoginAdministrador controllerLoginAdministrador;
+	ControllerLoginFuncionario controllerLoginFuncionario;
 	ServiceLogin serviceLogin;
 	
 	// Repositorys
@@ -34,10 +37,16 @@ public class Inicializador {
 		this.historicoDeVendas = new HistoricoDeVendas();
 	}
 	
-	public ControllerLogin inicializaLogin() {
+	public ControllerLoginAdministrador inicializaAdministradorLogin() {
 		this.serviceLogin = new ServiceLogin(this.repositoryContas);
-		this.controllerLogin = new ControllerLogin(this.serviceLogin);
-		return this.controllerLogin;
+		this.controllerLoginAdministrador = new ControllerLoginAdministrador(this.serviceLogin);
+		return this.controllerLoginAdministrador;
+	}
+	
+	public ControllerLoginFuncionario inicializaFuncionarioLogin() {
+		this.serviceLogin = new ServiceLogin(this.repositoryContas);
+		this.controllerLoginFuncionario = new ControllerLoginFuncionario(this.serviceLogin);
+		return this.controllerLoginFuncionario;
 	}
 	
 	public ControllerFuncionario inicializaFuncionario() {
