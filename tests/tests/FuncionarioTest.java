@@ -41,12 +41,16 @@ class FuncionarioTest extends TestesGerais{
 	}
 	
 	@Test
-	void testVisualizaVenda() {
+	void testVisualizaAdicionaRemoveVenda() {
 		String idProduto = this.controllerAdministrador.adicionaProduto("Pétala de Rosa", 1.00);
 		String idVenda = controllerFuncionario.iniciaVenda();
-		String venda = "1 - ID da venda | " + controllerFuncionario.getDataVenda(idVenda) + " - Data da venda\n\n";
+		String venda = "1 - ID da venda | " + controllerFuncionario.getDataVenda(idVenda) + " - Data da venda" + " | Em Andamento\n\n";
 		assertEquals(venda, controllerFuncionario.visualizarVenda(idVenda));
 		controllerFuncionario.adicionarProduto(idProduto, idVenda, 2);
+		venda = "1 - ID da venda | " + controllerFuncionario.getDataVenda(idVenda) + " - Data da venda\n\n" + produtoDTO;
+		assertEquals(venda, controllerFuncionario.visualizarVenda(idVenda));
+		controllerFuncionario.adicionarProduto(idProduto, idVenda, 2);
+		produtoDTO = "1 | Pétala de Rosa | 1,00 R$ | 4x | 4,00 R$";
 		venda = "1 - ID da venda | " + controllerFuncionario.getDataVenda(idVenda) + " - Data da venda\n\n" + produtoDTO;
 		assertEquals(venda, controllerFuncionario.visualizarVenda(idVenda));
 	}

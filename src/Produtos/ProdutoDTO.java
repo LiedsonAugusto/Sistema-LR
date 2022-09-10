@@ -28,6 +28,10 @@ public class ProdutoDTO {
     	return this.ID;
     }
     
+    public void adicionaMaisUm() {
+    	this.quantidade ++;
+    }
+    
     @Override
     public String toString() {
     	return this.ID + " | " + this.nome + " | " + String.format("%.2f", this.preco) + " R$ | " + this.quantidade + "x | " + String.format("%.2f", this.preco * this.quantidade) + " R$";
