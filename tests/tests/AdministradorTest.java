@@ -119,10 +119,20 @@ class AdministradorTest extends TestesGerais{
 		controllerAdministrador.adicionaProduto("TV", 1000);
 		String idVenda = controllerFuncionario.iniciaVenda();
 		controllerFuncionario.adicionarProduto("1", "1", 3);
-		controllerFuncionario.concluirVenda(idVenda);
-		String retorno = "1 - ID da venda | " + historicoDeVendas.get("1").getDataDeVenda() + " - Data da venda | Concluida" + 
+		String retorno = "1 - ID da venda | " + historicoDeVendas.get("1").getDataDeVenda() + " - Data da venda | Em andamento" + 
 				'\n' + "1 | TV | 1000,00 R$ | 3x | 3000,00 R$" + '\n';
 				
+		assertEquals(retorno + '\n', controllerAdministrador.listarHistorico(historicoDeVendas.get("1").getDataDeVenda()));
+
+		controllerAdministrador.adicionaProduto("CAMA", 1500);
+		controllerFuncionario.adicionarProduto("2", "1", 1);
+		controllerFuncionario.adicionarProduto("1", "1", 1);
+		controllerFuncionario.concluirVenda(idVenda);
+		
+		retorno = "1 - ID da venda | " + historicoDeVendas.get("1").getDataDeVenda() + " - Data da venda | Concluida" + 
+						'\n' + "1 | TV | 1000,00 R$ | 4x | 4000,00 R$" + '\n' +
+								"2 | CAMA | 1500,00 R$ | 1x | 1500,00 R$\n";
+
 		assertEquals(retorno + '\n', controllerAdministrador.listarHistorico(historicoDeVendas.get("1").getDataDeVenda()));
 		
 	}
