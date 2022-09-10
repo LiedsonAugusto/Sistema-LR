@@ -102,6 +102,32 @@ class AdministradorTest extends TestesGerais{
 	}
 	
 	@Test
+	void testListarHistotico() {
+		try {
+			controllerAdministrador.listarHistorico(null);
+			fail(nulo);
+		} catch (NullPointerException npe) {}
+		try {
+			controllerAdministrador.listarHistorico(" ");
+			fail(vazio);
+		} catch (IllegalArgumentException iae) {}
+		try {
+			controllerAdministrador.listarHistorico("09-02-2002");
+			fail(iae);
+		} catch(IllegalArgumentException iae) {}
+		
+		controllerAdministrador.adicionaProduto("TV", 1000);
+		String idVenda = controllerFuncionario.iniciaVenda();
+		controllerFuncionario.adicionarProduto("1", "1", 3);
+		controllerFuncionario.concluirVenda(idVenda);
+		String retorno = "1 - ID da venda | " + historicoDeVendas.get("1").getDataDeVenda() + " - Data da venda | Concluida" + 
+				'\n' + "1 | TV | 1000,00 R$ | 3x | 3000,00 R$" + '\n';
+				
+		assertEquals(retorno + '\n', controllerAdministrador.listarHistorico(historicoDeVendas.get("1").getDataDeVenda()));
+		
+	}
+	
+	@Test
 	void testAlteraNomeProduto() {
 		try {
 			controllerAdministrador.alteraNomeProduto(null, null);
