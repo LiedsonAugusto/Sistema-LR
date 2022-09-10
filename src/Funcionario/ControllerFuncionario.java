@@ -27,6 +27,7 @@ public class ControllerFuncionario {
     	this.validadorEntradas.validarIDInexistente(this.serviceFuncionario.getIDsProduto(), idProduto);
     	this.validadorEntradas.validarIDInexistente(this.serviceFuncionario.getIDsVendas(), idVenda);
     	this.validadorEntradas.validaPositivo(quantidade);
+    	this.validadorEntradas.validaVenda(this.serviceFuncionario.getVendas(), idVenda);
     	this.serviceFuncionario.adicionarProduto(idProduto, idVenda, quantidade);
     }
 
@@ -35,6 +36,7 @@ public class ControllerFuncionario {
     	this.validadorEntradas.validarIDInexistente(this.serviceFuncionario.getIDsProduto(), idProduto);
     	this.validadorEntradas.validarIDInexistente(this.serviceFuncionario.getIDsVendas(), idVenda);
     	this.validadorEntradas.validaPositivo(quantidade);
+    	this.validadorEntradas.validaVenda(this.serviceFuncionario.getVendas(), idVenda);
     	this.serviceFuncionario.removerProduto(idVenda, idProduto, quantidade);
     }
 

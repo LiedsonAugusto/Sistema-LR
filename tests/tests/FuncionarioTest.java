@@ -107,9 +107,10 @@ class FuncionarioTest extends TestesGerais{
 			fail(nulo);
 		} catch (NullPointerException npe) {}
 		
+		controllerFuncionario.iniciaVenda();
+		controllerAdministrador.adicionaProduto("Pétala de Rosa", 1.00);
+		
 		try {
-			controllerFuncionario.iniciaVenda();
-			controllerAdministrador.adicionaProduto("Pétala de Rosa", 1.00);
 			controllerFuncionario.adicionarProduto("1", "1", -1);
 			fail(positivo);
 		} catch (IllegalArgumentException iae) {}
@@ -125,11 +126,24 @@ class FuncionarioTest extends TestesGerais{
 		} catch (NullPointerException npe) {}
 		
 		try {
-			controllerFuncionario.iniciaVenda();
-			controllerAdministrador.adicionaProduto("Pétala de Rosa", 1.00);
 			controllerFuncionario.removerProduto("1", "1", -1);
 			fail(positivo);
 		} catch (IllegalArgumentException iae) {}
+		
+		controllerFuncionario.concluirVenda("1");
+		
+		try {
+			controllerFuncionario.adicionarProduto("1", "1", 1);
+			fail(concluido);
+		} catch (RuntimeException rte) {}
+		
+		try {
+			controllerFuncionario.removerProduto("1", "1", 1);
+			fail(concluido);
+		} catch (RuntimeException rte) {}
+		
 	}
+	
+	
 	
 }

@@ -1,6 +1,9 @@
 package Validador;
 
+import java.util.HashMap;
 import java.util.Set;
+
+import Vendas.Venda;
 
 public class ValidadorEntradas {
 	
@@ -11,6 +14,7 @@ public class ValidadorEntradas {
 	String idInvalido = "Erro ao passar um ID inexistente";
 	String idExistente = "Erro ao passar um ID existente";
 	String dataInvalida = "Erro ao passar data inexistente";
+	String concluida = "Erro ao tentar adicionar um produto em uma venda concluída";
 	
 	public void valida(String argumento) {
 		if (argumento.isBlank()) {
@@ -77,5 +81,13 @@ public class ValidadorEntradas {
 			}
 		}
 		throw new IllegalArgumentException(dataInvalida); 
+	}
+
+	public void validaVenda(HashMap<String, Venda> vendas, String idVenda) {
+		for (Venda venda : vendas.values()) {
+			if (venda.isConcluida()) {
+				throw new RuntimeException(concluida);
+			}
+		}
 	}
 }

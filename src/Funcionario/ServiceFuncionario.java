@@ -79,5 +79,9 @@ public class ServiceFuncionario {
 	public String getDataVenda(String ID) {
 		return this.historicoDeVendas.get(ID).getDataDeVenda();
 	}
+	
+	public HashMap<String, Venda> getVendas(){
+		return this.historicoDeVendas.getVendas();
+	}
 
 }

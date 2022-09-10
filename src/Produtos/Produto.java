@@ -37,6 +37,14 @@ public class Produto {
     	this.ID = ID;
     }
     
+    public void adicionaQuantidade(int quantidade) {
+    	this.quantidade += quantidade;
+    }
+    
+    public void removeQuantidade(int quantidade) {
+    	this.quantidade -= quantidade;
+    }
+    
     @Override
     public String toString() {
     	return this.ID + " | " + this.nome + " | " + this.quantidade + " Itens em estoque | " + String.format("%.2f", this.preco) + " R$";

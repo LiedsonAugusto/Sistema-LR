@@ -31,6 +31,7 @@ class TestesGerais {
 	String nome = "Era esperado uma Exception ao passar um nome com números";
 	String positivo = "Era esperado uma Exception números negativos";
 	String idInexistente = "Era espreado uma Excepption ao passar im ID inexistente";
+	String concluido = "Era esperado uma Runtime ao alterar uma venda concluída";
 	
 	@BeforeEach
 	void setUp(){
