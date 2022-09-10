@@ -1,6 +1,7 @@
 package Vendas;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public class HistoricoDeVendas {
 
@@ -28,6 +29,10 @@ public class HistoricoDeVendas {
     
     public HashMap<String, Venda> getVendas(){
     	return this.vendas;
+    }
+    
+    public Set<String> getIDs(){
+    	return this.vendas.keySet();
     }
 
 }

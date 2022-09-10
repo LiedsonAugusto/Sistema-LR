@@ -25,11 +25,23 @@ public class Venda {
     public void adicionaProduto(ProdutoDTO produto2) {
     	for (ProdutoDTO produto : this.listaDeProdutos) {
     		if (produto.equals(produto2)) {
-    			produto.adicionaMaisUm();
+    			produto.adicionaQuantidade(produto2.getQuantidade());
     			return;
     		}
     	}
     	this.listaDeProdutos.add(produto2);
+    }
+    
+    public void removeProduto(String idProduto, int quantidade) {
+    	for (ProdutoDTO produto : this.listaDeProdutos){
+    		if (produto.getID().equals(idProduto)){
+    			produto.removeQuantidade(quantidade);
+    			if (produto.getQuantidade() == 0) {
+    				this.listaDeProdutos.remove(produto);
+    			}
+    			return;
+    		}
+    	}
     }
 
     public String getIdDaVenda() {
@@ -70,9 +82,5 @@ public class Venda {
     
     public void alteraStatus() {
     	this.concluida = !this.concluida;
-    }
-    
-    public void removeProduto(ProdutoDTO produto) {
-    	this.listaDeProdutos.remove(produto);
     }
 }

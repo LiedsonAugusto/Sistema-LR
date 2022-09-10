@@ -28,8 +28,19 @@ public class ProdutoDTO {
     	return this.ID;
     }
     
-    public void adicionaMaisUm() {
-    	this.quantidade ++;
+    public int getQuantidade() {
+    	return this.quantidade;
+    }
+    
+    public void adicionaQuantidade(int quantidade) {
+    	this.quantidade += quantidade;
+    }
+    
+    public void removeQuantidade(int quantidade) {
+    	this.quantidade -= quantidade;
+    	if (this.quantidade < 0) {
+    		this.quantidade = 0;
+    	}
     }
     
     @Override

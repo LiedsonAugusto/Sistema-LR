@@ -29,7 +29,7 @@ class TestesGerais {
 	String rte = "Era esperado uma Runtime Exception";
 	String iae = "Era esperado uma IllegalArgumentException";
 	String nome = "Era esperado uma Exception ao passar um nome com números";
-	String positivo = "Era esperado um parâmetro com número positivo";
+	String positivo = "Era esperado uma Exception números negativos";
 	String idInexistente = "Era espreado uma Excepption ao passar im ID inexistente";
 	
 	@BeforeEach

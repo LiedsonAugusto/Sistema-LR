@@ -29,10 +29,8 @@ public class ServiceFuncionario {
     	this.historicoDeVendas.get(idVenda).adicionaProduto(produtoDTO);
     }
 
-    public void removerProduto(String idVenda, String idProduto) {
-    	Produto produto = this.depositoDeProdutos.get(idProduto);
-    	ProdutoDTO produtoDTO = new ProdutoDTO(produto.getID(), produto.getNome(), produto.getPreco(), 0);
-    	this.historicoDeVendas.get(idVenda).removeProduto(produtoDTO);
+    public void removerProduto(String idVenda, String idProduto, int quantidade) {
+    	this.historicoDeVendas.get(idVenda).removeProduto(idProduto, quantidade);
     }
 
     public void removerVenda(String idVenda) {
@@ -70,8 +68,12 @@ public class ServiceFuncionario {
 		return venda.getIdDaVenda();
 	}
 	
-	public Set<String> getIDs(){
+	public Set<String> getIDsProduto(){
 		return this.depositoDeProdutos.getIDs();
+	}
+	
+	public Set<String> getIDsVendas(){
+		return this.historicoDeVendas.getIDs();
 	}
 	
 	public String getDataVenda(String ID) {
