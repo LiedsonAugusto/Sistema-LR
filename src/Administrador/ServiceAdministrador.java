@@ -80,9 +80,7 @@ public class ServiceAdministrador {
     }
 
     public void limparDeposito() {
-    	for (String chave : this.depositoDeProdutos.getProdutos().keySet()) {
-    		this.depositoDeProdutos.remove(chave);
-    	}
+    	this.depositoDeProdutos.limpar();
     }
     
     public int tamanhoDeposito(){

@@ -34,4 +34,7 @@ public class DepositoDeProdutos {
     	return this.produtos.keySet();
     }
 
+    public void limpar() {
+    	this.produtos = new HashMap<>();
+    }
 }

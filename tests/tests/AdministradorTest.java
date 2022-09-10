@@ -168,4 +168,81 @@ class AdministradorTest extends TestesGerais{
 		assertEquals(toStringProduto1 + '\n', controllerAdministrador.listaProduto("1"));
 	}
 		
+	@Test
+	void testAdicionaProduto() {
+		try {
+			controllerAdministrador.adicionaProduto(null, 2000);
+			fail(nulo);
+		} catch (NullPointerException npe) {}
+		try {
+			controllerAdministrador.adicionaProduto("", 2000);
+			fail(iae);
+		} catch (IllegalArgumentException npe) {}
+		try {
+			controllerAdministrador.adicionaProduto("oi123", 400);
+			fail(iae);
+		} catch (IllegalArgumentException iae) {}
+		try {
+			controllerAdministrador.adicionaProduto("TV", -500);
+			fail(iae);
+		} catch (IllegalArgumentException iae) {}
+	}
+	
+	@Test
+	void testRemoveProduto() {
+		try {
+			controllerAdministrador.removeProduto(null);
+			fail(nulo);
+		} catch (NullPointerException npe) {}
+		try {
+			controllerAdministrador.removeProduto("");
+			fail(iae);
+		} catch (IllegalArgumentException iae) {}
+		try {
+			controllerAdministrador.removeProduto("111");
+			fail(iae);
+		} catch (IllegalArgumentException iae) {}
+		controllerAdministrador.adicionaProduto("TV", 3000);
+		controllerAdministrador.adicionaProduto("HD", 500);
+		controllerAdministrador.removeProduto("2");
+		try {
+			controllerAdministrador.listaProduto("2");
+			fail(iae);
+		} catch (IllegalArgumentException iae) {}
+		controllerAdministrador.removeProduto("1");
+		try {
+			controllerAdministrador.listaProduto("1");
+			fail(iae);
+		} catch (IllegalArgumentException iae) {}
+	}
+	
+	@Test
+	void testLimparDeposito() {
+		try {
+			controllerAdministrador.limparDeposito();
+			fail(rte);
+		} catch (RuntimeException rte) {}
+		controllerAdministrador.adicionaProduto("TV", 3000);
+		controllerAdministrador.limparDeposito();
+		try {
+			controllerAdministrador.listarDeposito();
+			fail(rte);
+		} catch (RuntimeException rte) {}
+		controllerAdministrador.adicionaProduto("TV", 3000);
+		controllerAdministrador.adicionaProduto("CD", 3500);
+		controllerAdministrador.limparDeposito();
+		try {
+			controllerAdministrador.listarDeposito();
+			fail(rte);
+		} catch (RuntimeException rte) {}
+	}
+	
+	@Test
+	void testTamnhoDeposito() {
+		assertEquals(0, controllerAdministrador.tamanhoDeposito());
+		controllerAdministrador.adicionaProduto("TV", 3000);
+		assertEquals(1, controllerAdministrador.tamanhoDeposito());
+		controllerAdministrador.removeProduto("1");
+		assertEquals(0, controllerAdministrador.tamanhoDeposito());
+	}
 }
