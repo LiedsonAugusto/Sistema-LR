@@ -47,6 +47,10 @@ public class Produto {
     	this.quantidade += quantidade;
     }
     
+    public int getQuntidade() {
+    	return this.quantidade;
+    }
+    
     public void removeQuantidade(int quantidade) {
     	this.quantidade -= quantidade;
     }

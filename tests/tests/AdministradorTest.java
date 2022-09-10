@@ -140,6 +140,10 @@ class AdministradorTest extends TestesGerais{
 	@Test
 	void testAlteraNomeProduto() {
 		try {
+			controllerAdministrador.alteraNomeProduto("1", "TESTE1");
+			fail(iae);
+		} catch (IllegalArgumentException iae) {}
+		try {
 			controllerAdministrador.alteraNomeProduto(null, null);
 			fail(nulo);
 		} catch (NullPointerException npe) {}
@@ -175,6 +179,10 @@ class AdministradorTest extends TestesGerais{
 		controllerAdministrador.alteraPrecoProduto("1", 3500);
 		String toStringProduto1 = "1 | TV | 1 Itens em estoque | 3500,00 R$";
 		assertEquals(toStringProduto1 + '\n', controllerAdministrador.listaProduto("1"));
+		try {
+			controllerAdministrador.alteraPrecoProduto("1", -1000);
+			fail(iae);
+		} catch (IllegalArgumentException iae) {}
 	}
 		
 	@Test
@@ -195,6 +203,12 @@ class AdministradorTest extends TestesGerais{
 			controllerAdministrador.adicionaProduto("TV", -500);
 			fail(iae);
 		} catch (IllegalArgumentException iae) {}
+		controllerAdministrador.adicionaProduto("TV", 3000);
+		controllerAdministrador.adicionaProduto("TV", 3000);
+		assertEquals(2, depositoDeProdutos.get("1").getQuntidade());
+		controllerAdministrador.adicionaProduto("CAMA", 1000);
+		controllerAdministrador.adicionaProduto("CAMA", 3000, 4);
+		assertEquals(5, depositoDeProdutos.get("2").getQuntidade());
 	}
 	
 	@Test
