@@ -71,7 +71,25 @@ public class ServiceAdministrador {
     }
 
     public String adicionaProduto(String nome, double preco) {
+    	for (String chave : this.depositoDeProdutos.getProdutos().keySet()) {
+    		if (this.depositoDeProdutos.get(chave).getNome().equals(nome)) {
+    			this.depositoDeProdutos.get(chave).adicionaQuantidade(1);
+    			return this.depositoDeProdutos.get(chave).getID();
+    		}
+    	}
     	Produto novoProduto = new Produto(nome, preco);
+    	this.depositoDeProdutos.put(novoProduto);
+    	return novoProduto.getID();
+    }
+    
+    public String adicionaProduto(String nome, double preco, int quantidade) {
+    	for (String chave : this.depositoDeProdutos.getProdutos().keySet()) {
+    		if (this.depositoDeProdutos.get(chave).getNome().equals(nome)) {
+    			this.depositoDeProdutos.get(chave).adicionaQuantidade(quantidade);
+    			return this.depositoDeProdutos.get(chave).getID();
+    		}
+    	}
+    	Produto novoProduto = new Produto(nome, preco, quantidade);
     	this.depositoDeProdutos.put(novoProduto);
     	return novoProduto.getID();
     }

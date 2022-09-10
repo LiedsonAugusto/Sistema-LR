@@ -62,6 +62,14 @@ public class ControllerAdministrador {
     	this.validadorEntradas.validaPositivo(preco);
     	return this.serviceAdministrador.adicionaProduto(nome, preco);
     }
+    
+    public String adicionaProduto(String nome, double preco, int quantidade) {
+    	this.validadorEntradas.validaNome(nome);
+    	this.validadorEntradas.valida(nome);
+    	this.validadorEntradas.validaPositivo(preco);
+    	this.validadorEntradas.validaPositivo(quantidade);
+    	return this.serviceAdministrador.adicionaProduto(nome, preco, quantidade);
+    }
 
     public void removeProduto(String ID) {
     	this.validadorEntradas.valida(ID);
