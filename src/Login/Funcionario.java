@@ -24,4 +24,8 @@ public class Funcionario {
     	return this.senha;
     }
 
+	public void setSenha(String novaSenha) {
+		this.senha = novaSenha;
+	}
+
 }

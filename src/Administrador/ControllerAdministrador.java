@@ -1,6 +1,5 @@
 package Administrador;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import Validador.ValidadorEntradas;

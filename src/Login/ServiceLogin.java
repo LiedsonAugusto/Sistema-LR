@@ -50,4 +50,8 @@ public class ServiceLogin {
     	return this.repositoryContas.getChaveADM();
     }
 
+	public void alteraSenha(String ID, String novaSenha) {
+		this.repositoryContas.getFuncionario(ID).setSenha(novaSenha);
+	}
+
 }
