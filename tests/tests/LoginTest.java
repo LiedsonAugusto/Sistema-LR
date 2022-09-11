@@ -10,91 +10,91 @@ class LoginTest extends TestesGerais{
 	@Test
 	void testValidaLogFuncionario() {
 		try {
-			controllerLogin.validaLoginFuncionario(null, null);
+			controllerLoginFuncionario.validaLoginFuncionario(null, null);
 			fail(nulo);
 		} catch (NullPointerException npe) {}
 		
 		try {
-			controllerLogin.validaLoginFuncionario("", "");
+			controllerLoginFuncionario.validaLoginFuncionario("", "");
 			fail(vazio);
 		} catch (IllegalArgumentException iae) {}
 		
-		assertEquals(false, controllerLogin.validaLoginFuncionario(idFuncionario, "coxinha123"));
-		assertEquals(false, controllerLogin.validaLoginFuncionario("nada", senhaFuncionario));
-		assertEquals(false, controllerLogin.validaLoginFuncionario(idFuncionario, senhaADM));
-		assertEquals(true, controllerLogin.validaLoginFuncionario(idFuncionario, senhaFuncionario));
+		assertEquals(false, controllerLoginFuncionario.validaLoginFuncionario(idFuncionario, "coxinha123"));
+		assertEquals(false, controllerLoginFuncionario.validaLoginFuncionario("nada", senhaFuncionario));
+		assertEquals(false, controllerLoginFuncionario.validaLoginFuncionario(idFuncionario, senhaADM));
+		assertEquals(true, controllerLoginFuncionario.validaLoginFuncionario(idFuncionario, senhaFuncionario));
 	}
 	
 	@Test
 	void testValidaLogAdm() {
 		try {
-			controllerLogin.validaLoginAdm(null, null);
+			controllerLoginAdministrador.validaLoginAdm(null, null);
 			fail(nulo);
 		} catch (NullPointerException npe) {}
 		
 		try {
-			controllerLogin.validaLoginAdm("", "");
+			controllerLoginAdministrador.validaLoginAdm("", "");
 			fail(vazio);
 		} catch (IllegalArgumentException iae) {}
 		
-		assertEquals(false, controllerLogin.validaLoginAdm(idAdm, "coxinha123"));
-		assertEquals(false, controllerLogin.validaLoginAdm("nada", senhaADM));
-		assertEquals(false, controllerLogin.validaLoginAdm(idAdm, senhaFuncionario));
-		assertEquals(true, controllerLogin.validaLoginAdm(idAdm, senhaADM));
+		assertEquals(false, controllerLoginAdministrador.validaLoginAdm(idAdm, "coxinha123"));
+		assertEquals(false, controllerLoginAdministrador.validaLoginAdm("nada", senhaADM));
+		assertEquals(false, controllerLoginAdministrador.validaLoginAdm(idAdm, senhaFuncionario));
+		assertEquals(true, controllerLoginAdministrador.validaLoginAdm(idAdm, senhaADM));
 	}
 
 	@Test
 	void testAdicionaRemoveFuncionario() {
 		try {
-			controllerLogin.adicionaFuncionario(null, null, null);
+			controllerLoginAdministrador.adicionaFuncionario(null, null, null);
 			fail(nulo);
 		} catch (NullPointerException npe) {}
 		
 		try {
-			controllerLogin.adicionaFuncionario("", "", "");
+			controllerLoginAdministrador.adicionaFuncionario("", "", "");
 			fail(vazio);
 		} catch (IllegalArgumentException iae) {}
 		
 		try {
-			controllerLogin.adicionaFuncionario("ID1", "Senha1", "nome1");
+			controllerLoginAdministrador.adicionaFuncionario("ID1", "Senha1", "nome1");
 			fail(nome);
 		} catch (IllegalArgumentException iae) {}
 		
 		try {
-			controllerLogin.adicionaFuncionario(idFuncionario, "Senha1", "nome");
+			controllerLoginAdministrador.adicionaFuncionario(idFuncionario, "Senha1", "nome");
 		} catch (IllegalArgumentException iae) {}
 		
-		controllerLogin.adicionaFuncionario("ID1", "Senha1", "nome");
-		assertEquals(true, controllerLogin.validaLoginFuncionario("ID1", "Senha1"));
-		controllerLogin.removeFuncionario("ID1");
-		assertEquals(false, controllerLogin.validaLoginFuncionario("ID1", "Senha1"));
+		controllerLoginAdministrador.adicionaFuncionario("ID1", "Senha1", "nome");
+		assertEquals(true, controllerLoginFuncionario.validaLoginFuncionario("ID1", "Senha1"));
+		controllerLoginAdministrador.removeFuncionario("ID1");
+		assertEquals(false, controllerLoginFuncionario.validaLoginFuncionario("ID1", "Senha1"));
 	}
 	
 	@Test
 	void testAdicionaRemoveADM() {
 		try {
-			controllerLogin.adicionaADM(null, null, null);
+			controllerLoginAdministrador.adicionaADM(null, null, null);
 			fail(nulo);
 		} catch (NullPointerException npe) {}
 		
 		try {
-			controllerLogin.adicionaADM("", "", "");
+			controllerLoginAdministrador.adicionaADM("", "", "");
 			fail(vazio);
 		} catch (IllegalArgumentException iae) {}
 		
 		try {
-			controllerLogin.adicionaADM("ID1", "Senha1", "nome1");
+			controllerLoginAdministrador.adicionaADM("ID1", "Senha1", "nome1");
 			fail(nome);
 		} catch (IllegalArgumentException iae) {}
 		
 		try {
-			controllerLogin.adicionaADM(idAdm, "Senha1", "nome");
+			controllerLoginAdministrador.adicionaADM(idAdm, "Senha1", "nome");
 		} catch (IllegalArgumentException iae) {}
 		
 
-		controllerLogin.adicionaADM("ID1", "Senha1", "nome");
-		assertEquals(true, controllerLogin.validaLoginAdm("ID1", "Senha1"));
-		controllerLogin.removeADM("ID1");
-		assertEquals(false, controllerLogin.validaLoginAdm("ID1", "Senha1"));
+		controllerLoginAdministrador.adicionaADM("ID1", "Senha1", "nome");
+		assertEquals(true, controllerLoginAdministrador.validaLoginAdm("ID1", "Senha1"));
+		controllerLoginAdministrador.removeADM("ID1");
+		assertEquals(false, controllerLoginAdministrador.validaLoginAdm("ID1", "Senha1"));
 	}
 }

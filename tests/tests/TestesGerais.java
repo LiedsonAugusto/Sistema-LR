@@ -5,7 +5,8 @@ import Administrador.ControllerAdministrador;
 import Administrador.ServiceAdministrador;
 import Funcionario.ControllerFuncionario;
 import Funcionario.ServiceFuncionario;
-import Login.ControllerLogin;
+import Login.ControllerLoginAdministrador;
+import Login.ControllerLoginFuncionario;
 import Login.RepositoryContas;
 import Login.ServiceLogin;
 import Produtos.DepositoDeProdutos;
@@ -13,11 +14,14 @@ import Vendas.HistoricoDeVendas;
 
 class TestesGerais {
 	
-	ControllerLogin controllerLogin;
+	ControllerLoginAdministrador controllerLoginAdministrador;
+	ControllerLoginFuncionario controllerLoginFuncionario;
 	ControllerAdministrador controllerAdministrador;
 	ControllerFuncionario controllerFuncionario;
 	DepositoDeProdutos depositoDeProdutos;
 	HistoricoDeVendas historicoDeVendas;
+	RepositoryContas repositoryContas;
+	ServiceLogin serviceLogin;
 	
 	String idAdm = "IDADM";
 	String idFuncionario = "IDFUNCIONARIO";
@@ -37,11 +41,15 @@ class TestesGerais {
 	void setUp(){
 		historicoDeVendas = new HistoricoDeVendas();
 		depositoDeProdutos = new DepositoDeProdutos();
+		repositoryContas = new RepositoryContas();
+		serviceLogin = new ServiceLogin(repositoryContas);
 		controllerFuncionario = new ControllerFuncionario(new ServiceFuncionario(historicoDeVendas, depositoDeProdutos));
 		controllerAdministrador = new ControllerAdministrador(new ServiceAdministrador(historicoDeVendas, depositoDeProdutos));
-		controllerLogin = new ControllerLogin(new ServiceLogin(new RepositoryContas()));
+		controllerLoginAdministrador = new ControllerLoginAdministrador(serviceLogin);
+		controllerLoginFuncionario = new ControllerLoginFuncionario(serviceLogin);
 		
-		controllerLogin.adicionaADM(idAdm, senhaADM, "ADM");
-		controllerLogin.adicionaFuncionario(idFuncionario, senhaFuncionario, "FUNCIONARIO");
+		
+		controllerLoginAdministrador.adicionaADM(idAdm, senhaADM, "ADM");
+		controllerLoginAdministrador.adicionaFuncionario(idFuncionario, senhaFuncionario, "FUNCIONARIO");
 	}
 }
