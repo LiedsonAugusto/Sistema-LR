@@ -8,6 +8,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/PC/Downloads/mysql-connector-java-8.0.30/mysql-connector-java-8.0.30.jar"/>
+=======
+	<classpathentry kind="lib" path="C:/Users/Joseff/Downloads/mysql-connector-java-8.0.30/mysql-connector-java-8.0.30.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Joseff/Downloads/sqlite-jdbc-3.39.3.0.jar"/>
+>>>>>>> db64e0d4a70f8b8157d17d2262e2893093577e99
 	<classpathentry kind="output" path="bin"/>
 </classpath>
