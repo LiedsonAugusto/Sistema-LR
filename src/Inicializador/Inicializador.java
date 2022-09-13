@@ -1,5 +1,8 @@
 package Inicializador;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 import Administrador.ControllerAdministrador;
 import Administrador.ServiceAdministrador;
 import Funcionario.ControllerFuncionario;
@@ -14,22 +17,22 @@ import Vendas.HistoricoDeVendas;
 public class Inicializador {
 
 	// Administrador
-	ControllerAdministrador controllerAdministrador;
-	ServiceAdministrador serviceAdministrador;
+	private ControllerAdministrador controllerAdministrador;
+	private ServiceAdministrador serviceAdministrador;
 	
 	// Funcionario
-	ControllerFuncionario controllerFuncionario;
-	ServiceFuncionario serviceFuncionario;
+	private ControllerFuncionario controllerFuncionario;
+	private ServiceFuncionario serviceFuncionario;
 
 	// Login
-	ControllerLoginAdministrador controllerLoginAdministrador;
-	ControllerLoginFuncionario controllerLoginFuncionario;
-	ServiceLogin serviceLogin;
+	private ControllerLoginAdministrador controllerLoginAdministrador;
+	private ControllerLoginFuncionario controllerLoginFuncionario;
+	private ServiceLogin serviceLogin;
 	
 	// Repositorys
-	RepositoryContas repositoryContas;
-	DepositoDeProdutos depositoDeProdutos;
-	HistoricoDeVendas historicoDeVendas;
+	private RepositoryContas repositoryContas;
+	private DepositoDeProdutos depositoDeProdutos;
+	private HistoricoDeVendas historicoDeVendas;
 	
 	public Inicializador() {
 		this.repositoryContas = new RepositoryContas();
@@ -59,6 +62,17 @@ public class Inicializador {
 		this.serviceAdministrador = new ServiceAdministrador(historicoDeVendas, depositoDeProdutos);
 		this.controllerAdministrador = new ControllerAdministrador(this.serviceAdministrador);
 		return this.controllerAdministrador;
+	}
+	
+	public static Connection conectar() {
+		Connection conexao;
+		String url = "jdbc:sqlite:src/Login/RepositoryContas.db";
+		try {
+			conexao = DriverManager.getConnection(url);
+			return conexao;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
 }

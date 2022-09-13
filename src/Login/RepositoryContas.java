@@ -1,7 +1,10 @@
 package Login;
 
+import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Set;
+
+import Inicializador.Inicializador;
 
 public class RepositoryContas {
 
@@ -45,4 +48,16 @@ public class RepositoryContas {
     	return this.administradores.keySet();
     }
 
+    private Connection inicializaSQL() {
+    	int tentativas = 0;
+    	while (tentativas < 200) {
+    		Connection conexao = Inicializador.conectar();
+    		if (conexao != null) {
+    			return conexao;
+    		}
+    		tentativas ++;
+    	}
+    	return null;
+    }
+    
 }
