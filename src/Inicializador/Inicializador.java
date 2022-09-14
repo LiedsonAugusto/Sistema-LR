@@ -1,8 +1,5 @@
 package Inicializador;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-
 import Administrador.ControllerAdministrador;
 import Administrador.ServiceAdministrador;
 import Funcionario.ControllerFuncionario;
@@ -62,17 +59,6 @@ public class Inicializador {
 		this.serviceAdministrador = new ServiceAdministrador(historicoDeVendas, depositoDeProdutos);
 		this.controllerAdministrador = new ControllerAdministrador(this.serviceAdministrador);
 		return this.controllerAdministrador;
-	}
-	
-	public static Connection conectar() {
-		Connection conexao;
-		String url = "jdbc:sqlite:src/Login/RepositoryContas.db";
-		try {
-			conexao = DriverManager.getConnection(url);
-			return conexao;
-		} catch (Exception e) {
-			return null;
-		}
 	}
 	
 }

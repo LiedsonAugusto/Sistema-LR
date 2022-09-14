@@ -1,10 +1,8 @@
 package Login;
 
-import java.sql.Connection;
+import java.sql.*;
 import java.util.HashMap;
 import java.util.Set;
-
-import Inicializador.Inicializador;
 
 public class RepositoryContas {
 
@@ -20,7 +18,7 @@ public class RepositoryContas {
     	return this.funcionarios.get(ID);
     }
 
-    public void putFuncionario(String ID, Funcionario funcionario) {
+    public void putFuncionario(String ID, Funcionario funcionario) throws SQLException {
     	this.funcionarios.put(ID, funcionario);
     }
 
@@ -46,18 +44,6 @@ public class RepositoryContas {
     
     public Set<String> getChaveADM(){
     	return this.administradores.keySet();
-    }
-
-    private Connection inicializaSQL() {
-    	int tentativas = 0;
-    	while (tentativas < 200) {
-    		Connection conexao = Inicializador.conectar();
-    		if (conexao != null) {
-    			return conexao;
-    		}
-    		tentativas ++;
-    	}
-    	return null;
     }
     
 }

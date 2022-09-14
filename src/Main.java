@@ -5,7 +5,7 @@ import Inicializador.Inicializador;
 public class Main {
 
 	public static void main(String[] args) {
-		Connection conexao = Inicializador.conectar();
+		/**Connection conexao = Inicializador.conectar();
 		if (conexao == null) {
 			System.out.println("conexão falhou.");
 		} else {
@@ -23,7 +23,7 @@ public class Main {
 				System.out.println("Erro ao criar");
 			}
 			
-			/**try {
+			try {
 				sql = "delete from funcionarios where (?) ";
 				PreparedStatement stm = conexao.prepareStatement(sql);
 				stm.setString(1, "121111333");
@@ -32,7 +32,7 @@ public class Main {
 				conexao.close();
 			} catch (SQLException e) {
 				System.out.println("Erro ao deletar");
-			}**/
+			}
 			
 			try {
 				Statement stat = conexao.createStatement();
@@ -47,7 +47,7 @@ public class Main {
 			
 			
 			System.out.println("\nFinalizado\n");
-		}
+		}**/
 	}
 	
 }
