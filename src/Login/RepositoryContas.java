@@ -1,6 +1,5 @@
 package Login;
 
-import java.sql.*;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -18,7 +17,7 @@ public class RepositoryContas {
     	return this.funcionarios.get(ID);
     }
 
-    public void putFuncionario(String ID, Funcionario funcionario) throws SQLException {
+    public void putFuncionario(String ID, Funcionario funcionario) {
     	this.funcionarios.put(ID, funcionario);
     }
 
