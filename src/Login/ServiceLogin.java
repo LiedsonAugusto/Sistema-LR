@@ -1,18 +1,25 @@
 package Login;
 
 import java.util.Set;
+import Login.Cripto;
 
 public class ServiceLogin {
 
     private RepositoryContas repositoryContas;
+    private Cripto cripto;
     
     public ServiceLogin(RepositoryContas repositoryContas) {
     	this.repositoryContas = repositoryContas;
+    	this.cripto = new Cripto();
     }
 
     public boolean validaLoginFuncionario(String ID, String senha) {
     	Funcionario funcionario = this.repositoryContas.getFuncionario(ID);
-    	if (funcionario != null && funcionario.getSenha().equals(senha)) {
+    	if (funcionario == null) {
+    		return false;
+    	}
+    	String descriptSenha = cripto.Descriptografar(funcionario.getSenha());
+    	if (descriptSenha.equals(senha)) {
     		return true;
     	}
     	return false;
@@ -20,14 +27,18 @@ public class ServiceLogin {
 
     public boolean validaLoginAdm(String ID, String senha) {
     	Administrador administrador = this.repositoryContas.getAdministrador(ID);
-    	if (administrador != null && senha.equals(administrador.getSenha())) {
+    	if (administrador == null) {
+    		return false;
+    	}
+    	String descriptSenha = cripto.Descriptografar(administrador.getSenha());
+    	if (administrador != null && descriptSenha.equals(senha)) {
     		return true;
     	}
     	return false;
     }
 
     public void adicionaFuncionario(String idFuncionario, String senha, String nome){
-    	this.repositoryContas.putFuncionario(idFuncionario, new Funcionario(idFuncionario, senha, nome));
+    	this.repositoryContas.putFuncionario(idFuncionario, new Funcionario(idFuncionario, cripto.Criptografar(senha), nome));
     }
 
     public void removeFuncionario(String idFuncionario) {
@@ -35,7 +46,7 @@ public class ServiceLogin {
     }
 
     public void adicionaADM(String ID, String senha, String nome) {
-    	this.repositoryContas.putAdministrador(ID, new Administrador(ID, senha, nome));
+    	this.repositoryContas.putAdministrador(ID, new Administrador(ID, cripto.Criptografar(senha), nome));
     }
 
     public void removeADM(String ID) {
@@ -51,7 +62,7 @@ public class ServiceLogin {
     }
 
 	public void alteraSenha(String ID, String novaSenha) {
-		this.repositoryContas.getFuncionario(ID).setSenha(novaSenha);
+		this.repositoryContas.getFuncionario(ID).setSenha(cripto.Criptografar(novaSenha));
 	}
 
 }
