@@ -31,7 +31,7 @@ public class Cripto {
 		}
 	}
 	
-	public String Criptografar(String senha) {
+	/*public String Criptografar(String senha) {
 		String criptografia = "";
 		int soma;
 		
@@ -63,17 +63,18 @@ public class Cripto {
 			sb.append((char) charInt);
 		}
 		return sb.toString();
-	}
+	}*/
 
-	private quebrarDoService(String senha) {
-		String senhaInvertida = '';
-		String retorno;
-		char[] letras = senha.toCharArray;
-		for (int i = letras.length; i > -1 ; i--) {
+	public String quebrarDoService(String senha) {
+		String senhaInvertida = "";
+		String retorno = "";
+		int soma;
+		char[] letras = senha.toCharArray();
+		for (int i = letras.length - 1; i > -1 ; i--) {
 			senhaInvertida += letras[i];
 		}
 
-		for (chat letra : senhaInvertida.toCharArray) {
+		for (char letra : senhaInvertida.toCharArray()) {
 			String letraAleatoria = this.alfabeto[gerador.nextInt(26)];
 			if (this.setSoma7.contains(letraAleatoria)) { 
 				soma = 7;
@@ -86,8 +87,38 @@ public class Cripto {
 			}
 
 			String hexadecimal = String.format("%x", ((int) letra + soma));
-			String retorno += hexadecimal + letraAleatoria;
+			retorno += hexadecimal + letraAleatoria;
 		}
 		return retorno;
+	}
+	
+	public String montarDoRepo(String criptografia) {
+		String retorno = "";
+		String criptoInvertida = "";
+		int soma = 0;
+		
+		for (int i = 0; i < criptografia.length(); i += 3) {
+			String hexadecimal = "" + criptografia.charAt(i) + criptografia.charAt(i + 1);
+			String chave = "" + criptografia.charAt(i + 2);
+			
+			if (setSoma12.contains(chave)) {
+				soma = 12;
+			} else if (setSoma20.contains(chave) ) {
+				soma = 20;
+			} else if (setSoma7.contains(chave)) {
+				soma = 7;
+			} else if (setSoma9.contains(chave)) {
+				soma = 9;
+			}
+			
+			int decimal = Integer.parseInt(hexadecimal, 16) - soma;
+			retorno += (char) decimal;
+		}
+		
+		for (int i = retorno.length() - 1; i > -1; i--) {
+			criptoInvertida += "" + retorno.charAt(i);
+		}
+		
+		return criptoInvertida;
 	}
 }
