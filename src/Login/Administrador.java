@@ -23,5 +23,9 @@ public class Administrador {
     public String getSenha() {
     	return this.senha;
     }
+    
+    public void setSenha(String novaSenha) {
+    	 this.senha = novaSenha;
+    }
 
 }

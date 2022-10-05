@@ -17,9 +17,9 @@ public class ControllerLoginFuncionario {
     	return this.serviceLogin.validaLoginFuncionario(ID, senha);
     }
 	
-	public void alterarSenha(String ID, String novaSenha) {
-		this.validador.valida(novaSenha);
-		this.serviceLogin.alteraSenha(ID, novaSenha);
+	public void alteraSenhaFuncionario(String ID, String novaSenha) {
+		this.validador.valida(new String[] {ID, novaSenha});
+		this.serviceLogin.alteraSenhaFuncionario(ID, novaSenha);
 	}
 	
 }

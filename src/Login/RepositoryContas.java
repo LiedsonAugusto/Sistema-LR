@@ -2,7 +2,6 @@ package Login;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
 
 public class RepositoryContas {
@@ -19,8 +18,8 @@ public class RepositoryContas {
     	return this.funcionarios.get(ID);
     }
 
-    public void putFuncionario(String ID, Funcionario funcionario) {
-    	this.funcionarios.put(ID, funcionario);
+    public void putFuncionario(String idFuncionario, String senha, String nome) {
+    	this.funcionarios.put(idFuncionario, new Funcionario(idFuncionario, montar(senha), nome));
     }
 
     public void removeFuncionario(String ID) {
@@ -31,8 +30,8 @@ public class RepositoryContas {
     	return this.administradores.get(ID);
     }
 
-    public void putAdministrador(String ID, Administrador administrador) {
-    	this.administradores.put(ID, administrador);
+    public void putAdministrador(String ID, String senha, String nome) {
+    	this.administradores.put(ID, new Administrador(ID, montar(senha), nome));
     }
 
     public void removeADM(String ID) {
@@ -47,17 +46,31 @@ public class RepositoryContas {
     	return this.administradores.keySet();
     }
     
+    public boolean contemFuncionario(String iD, String mascara) {
+		return this.funcionarios.get(iD).getSenha().equals(montar(mascara));
+	}
+
+	public boolean contemAdministrador(String iD, String mascara) {
+		return this.administradores.get(iD).getSenha().equals(montar(mascara));
+	}
+
+	public void alteraSenhaFuncionario(String ID, String novaSenha) {
+		this.funcionarios.get(ID).setSenha(montar(novaSenha));
+	}
+
+	public void alteraSenhaAdminsitrador(String ID, String novaSenha) {
+		this.administradores.get(ID).setSenha(montar(novaSenha));
+	}
+    
     private String montar(String criptografia) {
     	String[] grupoSoma7  = {"q", "e", "t", "u", "o", "l"};
     	String[] grupoSoma12 = {"w", "r", "y", "i", "p", "k"};
     	String[] grupoSoma20 = {"j", "g", "d", "a", "x", "v", "n"};
     	String[] grupoSoma9  = {"h", "f", "s", "z", "c", "b", "m"};
-    	String[] alfabeto = {"w", "r", "y", "i", "p", "k", "h", "f", "s", "z", "c", "b", "m", "q", "e", "t", "u", "o", "l", "j", "g", "d", "a", "x", "v", "n"};
     	HashSet<String> setSoma7 = new HashSet<>();
     	HashSet<String> setSoma12 = new HashSet<>();
     	HashSet<String> setSoma20 = new HashSet<>();
     	HashSet<String> setSoma9 = new HashSet<>();
-    	Random gerador = new Random();
     	
     	for (String letra : grupoSoma7) {
 			setSoma7.add(letra);

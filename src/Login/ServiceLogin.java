@@ -7,39 +7,21 @@ import java.util.Set;
 public class ServiceLogin {
 
     private RepositoryContas repositoryContas;
-    private Cripto cripto;
     
     public ServiceLogin(RepositoryContas repositoryContas) {
     	this.repositoryContas = repositoryContas;
-    	this.cripto = new Cripto();
     }
 
     public boolean validaLoginFuncionario(String ID, String senha) {
-    	Funcionario funcionario = this.repositoryContas.getFuncionario(ID);
-    	if (funcionario == null) {
-    		return false;
-    	}
-    	String descriptSenha = cripto.Descriptografar(funcionario.getSenha());
-    	if (descriptSenha.equals(senha)) {
-    		return true;
-    	}
-    	return false;
+    	return this.repositoryContas.contemFuncionario(ID, quebrar(senha));
     }
 
     public boolean validaLoginAdm(String ID, String senha) {
-    	Administrador administrador = this.repositoryContas.getAdministrador(ID);
-    	if (administrador == null) {
-    		return false;
-    	}
-    	String descriptSenha = cripto.Descriptografar(administrador.getSenha());
-    	if (administrador != null && descriptSenha.equals(senha)) {
-    		return true;
-    	}
-    	return false;
+    	return this.repositoryContas.contemAdministrador(ID, quebrar(senha));
     }
 
     public void adicionaFuncionario(String idFuncionario, String senha, String nome){
-    	this.repositoryContas.putFuncionario(idFuncionario, new Funcionario(idFuncionario, quebrar(senha), nome));
+    	this.repositoryContas.putFuncionario(idFuncionario, quebrar(senha), nome);
     }
 
     public void removeFuncionario(String idFuncionario) {
@@ -47,7 +29,7 @@ public class ServiceLogin {
     }
 
     public void adicionaADM(String ID, String senha, String nome) {
-    	this.repositoryContas.putAdministrador(ID, new Administrador(ID, quebrar(senha), nome));
+    	this.repositoryContas.putAdministrador(ID, quebrar(senha), nome);
     }
 
     public void removeADM(String ID) {
@@ -62,8 +44,12 @@ public class ServiceLogin {
     	return this.repositoryContas.getChaveADM();
     }
 
-	public void alteraSenha(String ID, String novaSenha) {
-		this.repositoryContas.getFuncionario(ID).setSenha(quebrar(novaSenha));
+	public void alteraSenhaFuncionario(String ID, String novaSenha) {
+		this.repositoryContas.alteraSenhaFuncionario(ID, quebrar(novaSenha));
+	}
+	
+	public void alteraSenhaAdminstrador(String ID, String novaSenha) {
+		this.repositoryContas.alteraSenhaAdminsitrador(ID, quebrar(novaSenha));
 	}
 
 	private String quebrar(String senha) {
