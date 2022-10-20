@@ -4,54 +4,169 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
+/**
+ * Class de serviços que se comunica unicamente com o Repository de Contas, essa class presta serviços tanto para 
+ * administrador quanto para funcionário e não é responsabilidade dessa class separar ações por funções.
+ * 
+ * Essa é a única class que não presta serviço de criação de objetos pois a mesma envia para o repository 
+ * os dados criptografados, pois nesse caso estamos simulando uma situação de comunicação local/servidor.
+ * 
+ * Sobre a criptografia, a class possui um método privado que "quebra" todos os dados de String, dados esses que 
+ * transitam entre classes. ( A escolha de fazer a criptografia manualmente foi proposital, sabemos que existem 
+ * formas profissionais de criptografia, mas optamos pela experiência de criar nossa propria criptografia. )
+ * 
+ * @author Joseff
+ *
+ */
 public class ServiceLogin {
 
     private RepositoryContas repositoryContas;
     
+    /**
+     * Construtor da class que recebe um Repository criado pelo inicializador.
+     * O objetivo é, ao finalizar os estudos de banco de dados, utilizar o construtor
+     * para 'alimentar' os repositorios que serão zerados toda vez que o aplicativo
+     * iniciar (obviamente dependendo do tamanho do banco de dados), pois a busca em
+     * HashMaps foi escolhida como padrão.
+     * 
+     * @param repositoryContas | Objeto criado no inicializador e deve vir com alguns
+     * usuários padrão para teste e um SuperUser que ainda será implementado.
+     */
     public ServiceLogin(RepositoryContas repositoryContas) {
     	this.repositoryContas = repositoryContas;
     }
 
+    /**
+     * @author Joseff
+     * 
+     * Consultar no repository se existe um par de ID|Senha 
+     * permitindo ou não o login do Funcionário.
+     * 
+     * @param ID | Código de identificação do Funcionário.
+     * @param senha | Senha que deve estar contido no Funcionário
+     * @return Boolean que sinaliza se o usuário possue essa senha ou não, validando assim 
+     * o acesso ao sistema.
+     */
     public boolean validaLoginFuncionario(String ID, String senha) {
     	return this.repositoryContas.contemFuncionario(ID, quebrar(senha));
     }
-
+    
+    /**
+     * @author Joseff
+     * 
+     * Consulta no repository se existe um par de ID|Senha 
+     * permitindo ou não o login do Administrador.
+     * 
+     * @param ID | Código de identificação do Administrador
+     * @param senha | Senha que deve estar contido no Administrador
+     * @return Boolean que sinaliza se o usuário possue essa senha ou não, validando assim 
+     * o acesso ao sistema.
+     */
     public boolean validaLoginAdm(String ID, String senha) {
     	return this.repositoryContas.contemAdministrador(ID, quebrar(senha));
     }
 
+    /**
+     * @author Joseff
+     * 
+     * Solicita para o repository que crie e armazene um novo
+     * Funcionário em seu banco de dados.
+     * 
+     * @param idFuncionario | Código de identificação de um novo Funcionário.
+     * @param senha | Senha que será associada ao funcionário e utilizada no
+     * momento do login.
+     * @param nome | Nome do usuário.
+     */
     public void adicionaFuncionario(String idFuncionario, String senha, String nome){
     	this.repositoryContas.putFuncionario(idFuncionario, quebrar(senha), nome);
     }
 
+    /**
+     * @author Joseff
+     * 
+     * Solicita ao repository que remova um determinado funcionário, caso exista.
+     * 
+     * @param idFuncionario | Código do funcionário que será removido.
+     */
     public void removeFuncionario(String idFuncionario) {
     	this.repositoryContas.removeFuncionario(idFuncionario);
     }
 
+    /**
+     * @author Joseff
+     * 
+     * Solicita para o repository que crie e armazene um novo
+     * Administrador em seu banco de dados.
+     * 
+     * @param ID | Código de identificação de um novo Administrador.
+     * @param senha | Senha que será associada ao Administrador e utilizada no
+     * momento do login.
+     * @param nome | Nome do Administrador.
+     */
     public void adicionaADM(String ID, String senha, String nome) {
     	this.repositoryContas.putAdministrador(ID, quebrar(senha), nome);
     }
 
+    /**
+     * @author Joseff
+     * 
+     * Esse processo só deve ser efetuado por um SuperUsuário
+     * Solicita para o repository a remoção de um Administrador específico.
+     * 
+     * @param ID | Código de identificação do Administrador.
+     */
     public void removeADM(String ID) {
     	this.repositoryContas.removeADM(ID);
     }
     
+    /**
+     * @author Joseff
+     * 
+     * Solicita ao repository todas as chaves dos Funcionários
+     * armazenados no sistema. ( Método normalmente utilizado em validadores
+     * ou coisas do tipo )
+     * 
+     * @return Set de Strings com todas as chaves de Funcionários já armazenadas.
+     */
     public Set<String> getChavesFuncionario() {
     	return this.repositoryContas.getChaveFuncionario();
     }
     
+    /**
+     * @author Joseff
+     * 
+     * Solicita ao repository todas as chaves dos Administradores
+     * armazenados no sistema. ( // )
+     * 
+     * @return Set de Strings com todas as chaves de Administradores já armazenadas.
+     */
     public Set<String> getChavesADM() {
     	return this.repositoryContas.getChaveADM();
     }
 
+    // Método deve ser detalhado, Documentação barrada.
 	public void alteraSenhaFuncionario(String ID, String novaSenha) {
 		this.repositoryContas.alteraSenhaFuncionario(ID, quebrar(novaSenha));
 	}
-	
+	// Método deve ser detalhado, Documentação barrada.
 	public void alteraSenhaAdminstrador(String ID, String novaSenha) {
 		this.repositoryContas.alteraSenhaAdminsitrador(ID, quebrar(novaSenha));
 	}
 
+	/**
+	 * @author Joseff
+	 * 
+	 * Chave importante para a comunicação service/repository, pois é ela
+	 * a responsavel por quebrar todos os dados importantes que vão transitar 
+	 * via "rede" ( simulação até agora, no nosso caso )
+	 * 
+	 * Classe utilizada inicialmente para quebrar senha, por isso do param
+	 * senha, entretanto pode ser utilizada para qualquer quebra de String 
+	 * dentro da class.
+	 * 
+	 * @param senha | String que deseja quebrar.
+	 * @return String criptografada que contém as instruções de como montar.
+	 */
 	private String quebrar(String senha) {
 		String[] grupoSoma7  = {"q", "e", "t", "u", "o", "l"};
 		String[] grupoSoma12 = {"w", "r", "y", "i", "p", "k"};
@@ -101,6 +216,11 @@ public class ServiceLogin {
 			retorno += hexadecimal + letraAleatoria;
 		}
 		return retorno;
+	}
+	
+	public String montar(String criptografia) {
+		//TODO Responsável pela criptografia do repository deve implementar o processo reverso.
+		return null;
 	}
 	
 }
